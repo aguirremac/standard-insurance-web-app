@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from "react";
-import { Globe, Menu, X, Sun, Moon } from "lucide-react";
+import { Globe, Menu, X, Sun, Moon, Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import BrandLogo from "./BrandLogo";
-import { useTheme } from "@/contexts/ThemeContext";
+import useUtils from "@/hooks/use-utils";
 
 export function Header() {
   const [language, setLanguage] = useState<"EN" | "KO">("EN");
@@ -13,7 +13,8 @@ export function Header() {
     setLanguage(prev => (prev === "EN" ? "KO" : "EN"));
   };
 
-  const { theme, toggleTheme } = useTheme();
+  const { PHONE_NUMBER } = useUtils();
+
 
   const content = {
     EN: { services: "Services", about: "About", contact: "Contact", getQuote: "Get a Quote" },
@@ -21,10 +22,10 @@ export function Header() {
   };
 
   return (
-    <header className="bg-black-800 text-white sticky top-0 z-50 shadow-md">
+    <header className="bg-primary text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <BrandLogo />
+          <BrandLogo color="light" />
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -45,13 +46,17 @@ export function Header() {
               <span className="text-sm">{language}</span>
             </button>
 
-            {/* Dark Mode Toggle */}
-            <button onClick={toggleTheme}>
-            {theme === "dark" ? (<Sun />) : (<Moon />)}
-          </button>
+              <a
+                href={`tel:${PHONE_NUMBER}`}
+                className="flex items-center gap-2 px-2 py-2 rounded-full bg-accent ring-button shadow-lg hover:scale-110 transition-transform"
+                aria-label="Call us"
+              >
+              <Phone className="h-4 w-4" />
+              </a>
+
 
             {/* CTA */}
-            <Button className="bg-white text-[#042E4C] hover:bg-gray-100">{content[language].getQuote}</Button>
+            <Button size="lg" className="bg-white text-black font-bold  hover:bg-gray-100 rounded-full py-4">{content[language].getQuote}</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -78,14 +83,12 @@ export function Header() {
                   {language}
                 </button>
 
-                <button onClick={toggleTheme}>
-                  {theme === "dark" ? <Sun /> : <Moon />}
-                </button>
               </div>
 
-              <Button onClick={() => setMobileMenuOpen(false)} className="bg-white text-[#042E4C] w-full">
+              <Button onClick={() => setMobileMenuOpen(false)} className="bg-white text-white  w-full">
                 {content[language].getQuote}
               </Button>
+              
             </nav>
           </div>
         )}

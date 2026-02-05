@@ -1,21 +1,21 @@
-import { Shield, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Shield, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import Image from "next/image";
 
-export function HeroSection({ heroImageSrc }: { heroImageSrc: string }) {
+export function HeroSection({ heroImageSrc }: { heroImageSrc?: string }) {
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative h-[75svh] overflow-hidden flex items-center ">
       {/* Full-bleed background image */}
       <div className="absolute inset-0">
         <Image
-          src="/hero-1.jpg"
+          src={heroImageSrc || '/hero-1.jpg'}
           alt="Insurance hero background"
           fill
           priority
           className="object-cover"
         />
         {/* Layered overlays for readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#042E4C]/90 via-[#042E4C]/70 to-[#041F33]/80" />
+        <div className="absolute inset-0 bg-linear-to-br from-[#042E4C]/90 via-[#042E4C]/70 to-[#041F33]/80" />
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
@@ -40,8 +40,8 @@ export function HeroSection({ heroImageSrc }: { heroImageSrc: string }) {
           {/* Left content */}
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm backdrop-blur">
-              <Shield className="h-4 w-4" />
-              <span className="text-white/90">Trusted by 10,000+ clients worldwide</span>
+              <Shield className="h-4 w-4" color="white" />
+              <span className="text-white/90">Trusted protection from day one</span>
             </div>
 
             <h1 className="text-white text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-6xl">
@@ -59,7 +59,7 @@ export function HeroSection({ heroImageSrc }: { heroImageSrc: string }) {
             <div className="flex flex-col gap-3 pt-3 sm:flex-row">
               <Button
                 size="lg"
-                className="h-12 rounded-full bg-white px-7 text-[#042E4C] hover:bg-white/90"
+                className="h-12 rounded-full bg-white px-7 text-black font-semibold hover:bg-white/90"
                 onClick={() => (window.location.href = "#quote")}
               >
                 Get a Free Quote
