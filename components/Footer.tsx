@@ -1,3 +1,4 @@
+import useUtils from "@/hooks/use-utils";
 import {
   Shield,
   Phone,
@@ -9,6 +10,9 @@ import {
 } from "lucide-react";
 
 export function Footer() {
+
+  const { PHONE_NUMBER, COMPANY_EMAIL, ADDRESS } = useUtils();
+
   return (
     <footer className="bg-foreground text-gray-300 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -103,7 +107,7 @@ export function Footer() {
               <li className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-[#042E4C] mt-0.5 flex-shrink-0" />
                 <div>
-                  <div>+1 (555) 123-4567</div>
+                  <div>{ PHONE_NUMBER }</div>
                   <div className="text-gray-500">Mon-Fri 9am-5pm</div>
                 </div>
               </li>
@@ -113,15 +117,13 @@ export function Footer() {
                   href="mailto:info@standardinsurance.com"
                   className="hover:text-[#042E4C] transition-colors"
                 >
-                  info@standardinsurance.com
+                  { COMPANY_EMAIL}
                 </a>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-[#042E4C] mt-0.5 flex-shrink-0" />
                 <div>
-                  123 Insurance Plaza
-                  <br />
-                  New York, NY 10001
+                  { ADDRESS }
                 </div>
               </li>
             </ul>

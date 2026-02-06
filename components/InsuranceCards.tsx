@@ -3,161 +3,151 @@ import {
   Home,
   Car,
   Shield,
-  Briefcase,
   HardHat,
   FileCheck,
   TrendingUp,
-  Wrench,
   Users,
   Factory,
 } from "lucide-react";
 import { Button } from "./ui/button";
-import { Card, CardContent } from "./ui/card";
+import { Card } from "./ui/card";
 
 const insuranceTypes = [
   {
     icon: Building2,
     title: "Business Insurance",
-    description:
-      "Comprehensive coverage for your business assets, operations, and liability risks.",
-    color: "text-blue-600",
+    description: "Tailored protection for assets, operations, and liabilities.",
+    image:
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600",
   },
   {
     icon: Home,
     title: "Property Insurance",
-    description:
-      "Protect your commercial and residential properties against damage and loss.",
-    color: "text-green-600",
+    description: "Safeguard commercial and residential properties.",
+    image:
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1600",
   },
   {
     icon: Shield,
     title: "Public Liability",
-    description:
-      "Coverage for claims made against your business by members of the public.",
-    color: "text-purple-600",
+    description: "Cover against third-party injury or property damage.",
+    image:
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600",
   },
   {
     icon: Car,
     title: "Commercial Motor",
-    description:
-      "Complete vehicle insurance for your business fleet and commercial vehicles.",
-    color: "text-red-600",
-  },
-  {
-    icon: Home,
-    title: "Home Insurance",
-    description:
-      "Protect your home and belongings with comprehensive residential coverage.",
-    color: "text-orange-600",
-  },
-  {
-    icon: Car,
-    title: "Private Motor",
-    description:
-      "Affordable car insurance with flexible coverage options for personal vehicles.",
-    color: "text-indigo-600",
+    description: "Flexible insurance for business vehicles and fleets.",
+    image:
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600",
   },
   {
     icon: Users,
     title: "Management Liability",
-    description:
-      "Protection for directors and officers against legal claims and corporate risks.",
-    color: "text-teal-600",
+    description: "Protection for directors and officers.",
+    image:
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600",
   },
   {
     icon: HardHat,
     title: "Construction Insurance",
-    description:
-      "Specialized coverage for construction projects, contractors, and builders.",
-    color: "text-yellow-600",
+    description: "Specialist cover for builders and contractors.",
+    image:
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600",
   },
   {
     icon: FileCheck,
     title: "Professional Indemnity",
-    description:
-      "Essential protection against claims of professional negligence or errors.",
-    color: "text-pink-600",
+    description: "Cover for errors, omissions, and negligence.",
+    image:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1600",
   },
   {
     icon: TrendingUp,
     title: "Trade Credit",
-    description:
-      "Safeguard your business against customer insolvency and payment default.",
-    color: "text-cyan-600",
+    description: "Protection from unpaid invoices.",
+    image:
+      "https://images.unsplash.com/photo-1554224154-22dec7ec8818?q=80&w=1600",
   },
   {
     icon: Factory,
     title: "Industrial Special Risks",
-    description:
-      "Tailored coverage for complex industrial operations and unique risk exposures.",
-    color: "text-slate-600",
+    description: "Solutions for complex industrial operations.",
+    image:
+      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1600",
   },
 ];
 
-export function InsuranceCards() {
+export function InsuranceCards({showAll}: {showAll?: boolean}) {
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-24 bg-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-[#042E4C]/10 text-[#042E4C] rounded-full text-sm mb-4">
-            Our Services
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-14 gap-6">
+          <div>
+            <span className="inline-flex px-4 py-1.5 rounded-full text-sm bg-primary/10 text-primary mb-4">
+              Services
+            </span>
+            <h2 className="text-4xl font-semibold text-gray-900 mb-3">
+              What do we do
+            </h2>
+            <p className="text-lg text-gray-600 max-w-xl">
+              Smart, flexible insurance solutions designed around real-world
+              risks.
+            </p>
           </div>
-          <h2 className="text-4xl mb-4 text-gray-900">
-            Comprehensive Insurance Solutions
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From business to personal coverage, we offer tailored insurance
-            solutions to protect what matters most to you.
-          </p>
-        </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {insuranceTypes.map((insurance, index) => {
-            const Icon = insurance.icon;
-            return (
-              <Card
-                key={index}
-                className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-[#042E4C]/20 bg-white"
-              >
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <div className="inline-flex p-3 bg-gray-50 rounded-lg group-hover:bg-[#042E4C]/5 transition-colors">
-                      <Icon className={`h-8 w-8 ${insurance.color}`} />
-                    </div>
-                  </div>
-                  <h3 className="text-xl mb-3 text-gray-900">
-                    {insurance.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    {insurance.description}
-                  </p>
-                  <Button
-                    variant="outline"
-                    className="w-full group-hover:bg-[#042E4C] group-hover:text-white group-hover:border-[#042E4C] transition-all"
-                    onClick={() => (window.location.href = "#quote")}
-                  >
-                    Get Quote
-                  </Button>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-12">
-          <p className="text-gray-600 mb-4">
-            Can't find what you're looking for?
-          </p>
           <Button
-            size="lg"
-            className="bg-[#042E4C] hover:bg-[#063d64] text-white"
-            onClick={() => (window.location.href = "#contact")}
+            variant="outline"
+            className="rounded-full border-gray-300 text-gray-700 hover:border-primary hover:text-primary"
+            onClick={() => (window.location.href = "#all-services")}
           >
-            Contact Our Specialists
+            View all services
           </Button>
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {(showAll ? insuranceTypes : insuranceTypes.slice(0, 6)).map(
+            ({ icon: Icon, title, description, image }, i) => (
+              <Card
+                key={i}
+                onClick={() => (window.location.href = "#quote")}
+                className="group cursor-pointer overflow-hidden rounded-3xl border border-gray-200 bg-white
+                           transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              >
+                {/* Image (3/4) */}
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={image}
+                    alt={title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                </div>
+
+                {/* Content (1/4) */}
+                <div className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+                      <Icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      {title}
+                    </h3>
+                  </div>
+
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    {description}
+                  </p>
+
+                  <span className="inline-flex items-center text-sm font-medium text-primary">
+                    Get a quote →
+                  </span>
+                </div>
+              </Card>
+            )
+          )}
         </div>
       </div>
     </section>

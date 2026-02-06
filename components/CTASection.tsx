@@ -1,7 +1,10 @@
+import useUtils from "@/hooks/use-utils";
 import { Button } from "./ui/button";
 import { ArrowRight, Phone } from "lucide-react";
 
 export function CTASection() {
+
+  const { PHONE_NUMBER } = useUtils()
   return (
     <section className="py-20 bg-gradient-to-br from-[#042E4C] to-[#063d64] text-white relative overflow-hidden">
       {/* Background Pattern */}
@@ -27,7 +30,7 @@ export function CTASection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button
             size="lg"
-            className="bg-white text-[#042E4C] hover:bg-gray-100 text-lg px-8 py-6"
+            className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-6"
             onClick={() => (window.location.href = "#quote")}
           >
             Get Your Free Quote
@@ -36,11 +39,11 @@ export function CTASection() {
           <Button
             size="lg"
             variant="outline"
-            className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6"
-            onClick={() => (window.location.href = "tel:+15551234567")}
+            className="border-2 bg-accent border-white text-white text-lg px-8 py-6"
+            onClick={() => (window.location.href = `tel:${PHONE_NUMBER}`)}
           >
             <Phone className="mr-2 h-5 w-5" />
-            Call Now: (555) 123-4567
+            Call Now: {PHONE_NUMBER}
           </Button>
         </div>
 

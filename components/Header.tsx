@@ -5,6 +5,7 @@ import { Globe, Menu, X, Sun, Moon, Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import BrandLogo from "./BrandLogo";
 import useUtils from "@/hooks/use-utils";
+import { useRouter } from "next/navigation";
 
 export function Header() {
   const [language, setLanguage] = useState<"EN" | "KO">("EN");
@@ -12,6 +13,12 @@ export function Header() {
   const toggleLanguage = () => {
     setLanguage(prev => (prev === "EN" ? "KO" : "EN"));
   };
+
+  const route = useRouter()
+
+  const navigateToHome = () => {
+    route.push('/')
+  }
 
   const { PHONE_NUMBER } = useUtils();
 
@@ -25,13 +32,13 @@ export function Header() {
     <header className="bg-primary text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <BrandLogo color="light" />
+          <BrandLogo color="light" onClick={navigateToHome} />
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="hover:text-gray-200 transition-colors">{content[language].services}</a>
-            <a href="#about" className="hover:text-gray-200 transition-colors">{content[language].about}</a>
-            <a href="#contact" className="hover:text-gray-200 transition-colors">{content[language].contact}</a>
+            <a href="/services" className="hover:text-gray-200 transition-colors">{content[language].services}</a>
+            <a href="/about-us" className="hover:text-gray-200 transition-colors">{content[language].about}</a>
+            <a href="/contact" className="hover:text-gray-200 transition-colors">{content[language].contact}</a>
           </nav>
 
           {/* Controls */}

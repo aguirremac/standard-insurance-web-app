@@ -1,6 +1,14 @@
 import Image from "next/image";
 
-export default function BrandLogo({ height = 60, width = 200, color= "light" }) {
+
+interface IBrandLogoProps {
+    height?: number;
+    width?: number;
+    color?: "light" | "dark";
+    onClick?: () => void;
+}
+
+export default function BrandLogo({ height = 60, width = 200, color= "light", onClick } : IBrandLogoProps) {
 
   return (
       <Image
@@ -10,6 +18,7 @@ export default function BrandLogo({ height = 60, width = 200, color= "light" }) 
         priority
         height={height}
         width={width}
+        onClick={onClick}
       />
   );
 }
