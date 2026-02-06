@@ -8,6 +8,7 @@ import {
   Facebook,
   Twitter,
 } from "lucide-react";
+import BrandLogo from "./BrandLogo";
 
 export function Footer() {
 
@@ -20,8 +21,7 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-6">
-              <Shield className="h-8 w-8 text-[#042E4C]" />
-              <span className="text-xl text-white">Standard Insurance</span>
+              <BrandLogo />
             </div>
             <p className="text-sm text-gray-400 leading-relaxed">
               Professional insurance solutions tailored to protect your business
@@ -31,24 +31,24 @@ export function Footer() {
             <div className="flex space-x-4 mt-6">
               <a
                 href="#"
-                className="hover:text-[#042E4C] transition-colors"
+                className="hover:text-secondary transition-colors"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin className="h-5 w-5 text-secondary" />
               </a>
               <a
                 href="#"
-                className="hover:text-[#042E4C] transition-colors"
+                className="hover:text-secondary transition-colors"
                 aria-label="Facebook"
               >
-                <Facebook className="h-5 w-5" />
+                <Facebook className="h-5 w-5 text-secondary" />
               </a>
               <a
                 href="#"
-                className="hover:text-[#042E4C] transition-colors"
+                className="hover:text-secondary transition-colors"
                 aria-label="Twitter"
               >
-                <Twitter className="h-5 w-5" />
+                <Twitter className="h-5 w-5 text-secondary" />
               </a>
             </div>
           </div>
@@ -105,23 +105,23 @@ export function Footer() {
             <h3 className="text-white mb-6">Contact Us</h3>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start space-x-3">
-                <Phone className="h-5 w-5 text-[#042E4C] mt-0.5 flex-shrink-0" />
+                <Phone className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" />
                 <div>
                   <div>{ PHONE_NUMBER }</div>
                   <div className="text-gray-500">Mon-Fri 9am-5pm</div>
                 </div>
               </li>
               <li className="flex items-start space-x-3">
-                <Mail className="h-5 w-5 text-[#042E4C] mt-0.5 flex-shrink-0" />
+                <Mail className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" />
                 <a
                   href="mailto:info@standardinsurance.com"
-                  className="hover:text-[#042E4C] transition-colors"
+                  className="hover:text-secondary transition-colors"
                 >
                   { COMPANY_EMAIL}
                 </a>
               </li>
               <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-[#042E4C] mt-0.5 flex-shrink-0" />
+                <MapPin className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" />
                 <div>
                   { ADDRESS }
                 </div>

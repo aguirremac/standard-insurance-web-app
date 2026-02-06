@@ -6,6 +6,8 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import Image from "next/image";
+import useUtils from "@/hooks/use-utils";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -15,6 +17,8 @@ export function ContactSection() {
     subject: "",
     message: "",
   });
+
+  const { PHONE_NUMBER, COMPANY_EMAIL, ADDRESS} = useUtils()
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -37,22 +41,30 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-24 bg-gradient-to-b from-white to-neutral-50"
+      className="relative bg-gradient-to-b from-white to-neutral-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       <section className="relative w-screen  mt-16">
+           <div className="relative h-96">
+             <Image
+               src="/contact-us.jpg" // replace with your hero image
+               alt="Contact Us Page Image"
+               fill
+               className="object-cover object-bottom brightness-75"
+               priority
+             />
+             <div className="absolute inset-0 bg-primary/40"></div>
+             <div className="absolute inset-0 flex items-center justify-center">
+               <h1 className="text-4xl md:text-5xl font-bold text-white text-center px-6">
+                 Contact Us
+               </h1>
+             </div>
+           </div>
+         </section>
+
+
+      <div className="max-w-7xl mx-auto px-4 py-10 md:py-20 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5">
-            Contact
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight text-gray-900 mb-6">
-            Let’s talk insurance
-          </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Whether you’re after a quote or expert advice, our team is ready to
-            help — no pressure, just clarity.
-          </p>
-        </div>
+        
 
         <div className="grid lg:grid-cols-2 gap-14 items-start">
           {/* Left: Info */}
@@ -73,19 +85,19 @@ export function ContactSection() {
                 {
                   icon: Phone,
                   label: "Phone",
-                  value: "+1 (555) 123-4567",
+                  value: PHONE_NUMBER,
                   sub: "Mon–Fri, 9am–5pm",
                 },
                 {
                   icon: Mail,
                   label: "Email",
-                  value: "info@standardinsurance.com",
+                  value: COMPANY_EMAIL,
                   sub: "Reply within 24 hours",
                 },
                 {
                   icon: MapPin,
                   label: "Office",
-                  value: "123 Insurance Plaza, New York, NY",
+                  value: ADDRESS
                 },
                 {
                   icon: Clock,
@@ -117,7 +129,7 @@ export function ContactSection() {
             {/* Map Embed */}
             <div className="rounded-xl overflow-hidden shadow-lg h-64 bg-gray-200">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1234567890"
+                src="https://www.google.com/maps?q=Spaces,+80+Ann+Street,+Brisbane+City+QLD+4000,+Australia&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

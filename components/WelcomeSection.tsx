@@ -24,7 +24,7 @@ const pillars = [
 
 export function WelcomeSection() {
   return (
-    <section className="relative py-24 bg-linear-to-b from-white to-gray-50 overflow-hidden">
+    <section className="relative bg-linear-to-b from-white pt-20 to-gray-50 overflow-hidden">
       {/* Subtle brand glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#042E4C12,transparent_60%)]" />
 

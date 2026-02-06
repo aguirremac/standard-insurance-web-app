@@ -48,7 +48,7 @@ export function QuoteForm() {
   const progress = (currentStep / steps.length) * 100;
 
   return (
-    <section id="quote" className="py-16 bg-gray-50">
+    <section id="quote" className="py-16 md:py-[100px] bg-gray-50">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10">
@@ -65,7 +65,7 @@ export function QuoteForm() {
           {/* Progress */}
           <Progress value={progress} className="h-2 rounded-full mb-8" />
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-15">
             {/* Step 1: Coverage Type */}
             {currentStep === 1 && (
               <div className="space-y-4">

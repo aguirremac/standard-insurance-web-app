@@ -80,7 +80,7 @@ const insuranceTypes = [
 
 export function InsuranceCards({showAll}: {showAll?: boolean}) {
   return (
-    <section id="services" className="py-24 bg-neutral-50">
+    <section id="services" className="pt-20 pb-20 bg-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-14 gap-6">
