@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import BrandLogo from "./BrandLogo";
-import { Globe, Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Globe, Menu, X, Phone  } from "lucide-react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "./ui/select";
 import useUtils from "@/hooks/use-utils";
 import { useRouter } from "next/navigation";
+import { insuranceTypes } from "@/lib/insurance";
 
 type NavItem = {
   label: string;
@@ -23,23 +24,14 @@ export function Header() {
   const route = useRouter();
   const navigateToHome = () => route.push("/");
 
+
+  const insuranceTypesMappedArr = insuranceTypes.map((item) => ( {label: item.title, href: `/services/${item.slug}` }))
+
   const navItems: Record<"EN" | "KO", NavItem[]> = {
     EN: [
       {
         label: "Services",
-        subItems: [
-          { label: "Business Insurance", href: "/services/business" },
-          { label: "Property Insurance", href: "/services/property" },
-          { label: "Public Liability Insurance", href: "/services/public-liability" },
-          { label: "Commercial Motor Insurance", href: "/services/commercial-motor" },
-          { label: "Home Insurance", href: "/services/home" },
-          { label: "Private Motor Insurance", href: "/services/private-motor" },
-          { label: "Management Liability Insurance", href: "/services/management-liability" },
-          { label: "Construction Insurance", href: "/services/construction" },
-          { label: "Professional Indemnity Insurance", href: "/services/professional-indemnity" },
-          { label: "Trade Credit Insurance", href: "/services/trade-credit" },
-          { label: "Industrial Special Risks", href: "/services/industrial-special-risks" },
-        ],
+        subItems: [...insuranceTypesMappedArr, { label: "All Services", href: "/services"}]
       },
       {
         label: "About",
@@ -81,7 +73,7 @@ export function Header() {
               item.subItems ? (
                 <Select key={idx} onValueChange={(value) => route.push(value)}>
                   <SelectTrigger className="bg-transparent text-white border-none hover:text-gray-200 flex items-center gap-1">
-                    <SelectValue placeholder={item.label} />
+                     <span>{item.label}</span>
                   </SelectTrigger>
                   <SelectContent className="bg-white text-black rounded-md ">
                     {item.subItems.map((sub, subIdx) => (

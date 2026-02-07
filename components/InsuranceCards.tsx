@@ -11,74 +11,11 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
-
-const insuranceTypes = [
-  {
-    icon: Building2,
-    title: "Business Insurance",
-    description: "Tailored protection for assets, operations, and liabilities.",
-    image:
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600",
-  },
-  {
-    icon: Home,
-    title: "Property Insurance",
-    description: "Safeguard commercial and residential properties.",
-    image:
-      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1600",
-  },
-  {
-    icon: Shield,
-    title: "Public Liability",
-    description: "Cover against third-party injury or property damage.",
-    image:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600",
-  },
-  {
-    icon: Car,
-    title: "Commercial Motor",
-    description: "Flexible insurance for business vehicles and fleets.",
-    image:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600",
-  },
-  {
-    icon: Users,
-    title: "Management Liability",
-    description: "Protection for directors and officers.",
-    image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600",
-  },
-  {
-    icon: HardHat,
-    title: "Construction Insurance",
-    description: "Specialist cover for builders and contractors.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600",
-  },
-  {
-    icon: FileCheck,
-    title: "Professional Indemnity",
-    description: "Cover for errors, omissions, and negligence.",
-    image:
-      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1600",
-  },
-  {
-    icon: TrendingUp,
-    title: "Trade Credit",
-    description: "Protection from unpaid invoices.",
-    image:
-      "https://images.unsplash.com/photo-1554224154-22dec7ec8818?q=80&w=1600",
-  },
-  {
-    icon: Factory,
-    title: "Industrial Special Risks",
-    description: "Solutions for complex industrial operations.",
-    image:
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1600",
-  },
-];
+import { insuranceTypes } from "@/lib/insurance";
 
 export function InsuranceCards({showAll}: {showAll?: boolean}) {
+
+
   return (
     <section id="services" className="pt-20 pb-20 bg-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -97,22 +34,25 @@ export function InsuranceCards({showAll}: {showAll?: boolean}) {
             </p>
           </div>
 
-          <Button
+        {!showAll && (
+                  <Button
             variant="outline"
             className="rounded-full border-gray-300 text-gray-700 hover:border-primary hover:text-primary"
-            onClick={() => (window.location.href = "#all-services")}
+            onClick={() => (window.location.href = "/services")}
           >
             View all services
-          </Button>
+          </Button>)}
+
+
         </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {(showAll ? insuranceTypes : insuranceTypes.slice(0, 6)).map(
-            ({ icon: Icon, title, description, image }, i) => (
+            ({ icon: Icon, title, description, image, slug}, i) => (
               <Card
                 key={i}
-                onClick={() => (window.location.href = "#quote")}
+                onClick={() => (window.location.href = `/services/${slug}` )}
                 className="group cursor-pointer overflow-hidden rounded-3xl border border-gray-200 bg-white
                            transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
@@ -142,7 +82,7 @@ export function InsuranceCards({showAll}: {showAll?: boolean}) {
                   </p>
 
                   <span className="inline-flex items-center text-sm font-medium text-primary">
-                    Get a quote →
+                    Learn More →
                   </span>
                 </div>
               </Card>
