@@ -33,7 +33,7 @@ const iconsMap: Record<string, any> = {
 
 export default function ServicePage() {
   const params = useParams();
-  const { slug } = params;
+  const { slug } = params as { slug: string};
 
   const [insurance, setInsurance] = useState<any>(null);
 
