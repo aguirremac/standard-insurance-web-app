@@ -8,7 +8,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from ".
 import { Textarea } from "./ui/textarea";
 import { Progress } from "./ui/progress";
 import { ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 const steps = [
   { id: 1, name: "Coverage Type" },
@@ -48,7 +48,7 @@ export function QuoteForm() {
 
   const progress = (currentStep / steps.length) * 100;
 
-  const stepVariants = {
+  const stepVariants: Variants = {
     hidden: { opacity: 0, x: 20 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
     exit: { opacity: 0, x: -20, transition: { duration: 0.4, ease: "easeIn" } },

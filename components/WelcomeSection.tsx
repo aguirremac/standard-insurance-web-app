@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Shield, Clock, Users } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const pillars = [
   {
@@ -25,7 +25,7 @@ const pillars = [
   },
 ];
 
-const container = {
+const container: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -34,7 +34,7 @@ const container = {
   },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 32 },
   show: {
     opacity: 1,
