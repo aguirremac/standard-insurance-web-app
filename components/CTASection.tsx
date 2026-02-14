@@ -3,7 +3,7 @@
 import useUtils from "@/hooks/use-utils";
 import { Button } from "./ui/button";
 import { ArrowRight, Phone } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const container = {
   hidden: {},
@@ -14,7 +14,7 @@ const container = {
   },
 };
 
-const item = {
+const variantItem: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1,
@@ -58,14 +58,14 @@ export function CTASection() {
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
       >
         <motion.h2
-          variants={item}
+          variants={variantItem}
           className="text-4xl md:text-5xl mb-6"
         >
           Ready to Protect What Matters?
         </motion.h2>
 
         <motion.p
-          variants={item}
+          variants={variantItem}
           className="text-xl text-gray-200 max-w-3xl mx-auto mb-10"
         >
           Get a free, no-obligation quote today and discover why thousands of
@@ -73,7 +73,7 @@ export function CTASection() {
         </motion.p>
 
         <motion.div
-          variants={item}
+          variants={variantItem}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
@@ -101,7 +101,7 @@ export function CTASection() {
         </motion.div>
 
         <motion.div
-          variants={item}
+          variants={variantItem}
           className="mt-12 text-sm text-gray-300"
         >
           <p>Available Monday - Friday, 9am - 5pm EST</p>
