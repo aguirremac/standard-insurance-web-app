@@ -5,21 +5,25 @@ import { Button } from "./ui/button";
 import { ArrowRight, Phone } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
-const container = {
+const containerVariants: Variants = {
   hidden: {},
-  show: {
+  visible: {
     transition: {
-      staggerChildren: 0.14,
+      staggerChildren: 0.14, // only staggerChildren goes here
+      delayChildren: 0,
     },
   },
 };
 
-const variantItem: Variants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
-  show: {
+  visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: {
+      duration: 0.6,
+      ease: "easeOut", // valid easing type
+    },
   },
 };
 
@@ -51,21 +55,18 @@ export function CTASection() {
       </motion.div>
 
       <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
       >
-        <motion.h2
-          variants={variantItem}
-          className="text-4xl md:text-5xl mb-6"
-        >
+        <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl mb-6">
           Ready to Protect What Matters?
         </motion.h2>
 
         <motion.p
-          variants={variantItem}
+          variants={itemVariants}
           className="text-xl text-gray-200 max-w-3xl mx-auto mb-10"
         >
           Get a free, no-obligation quote today and discover why thousands of
@@ -73,7 +74,7 @@ export function CTASection() {
         </motion.p>
 
         <motion.div
-          variants={variantItem}
+          variants={itemVariants}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
@@ -100,10 +101,7 @@ export function CTASection() {
           </motion.div>
         </motion.div>
 
-        <motion.div
-          variants={variantItem}
-          className="mt-12 text-sm text-gray-300"
-        >
+        <motion.div variants={itemVariants} className="mt-12 text-sm text-gray-300">
           <p>Available Monday - Friday, 9am - 5pm EST</p>
         </motion.div>
       </motion.div>
