@@ -16,7 +16,7 @@ const pillars = [
   },
   {
     icon: Users,
-    title: "People First",
+    title: "Client First",
     desc: "Real advisors providing tailored insurance solutions — no scripts, no pressure.",
     image: "/pillars/people.jpg",
   },
@@ -93,7 +93,7 @@ export function WelcomeSection() {
       className="object-cover"
       priority
     />
-    <div className="absolute inset-0 bg-accent/85" />
+    <div className="absolute inset-0 bg-primary/85" />
   </div>
 
   {/* Content */}

@@ -9,10 +9,13 @@ import {
   Twitter,
 } from "lucide-react";
 import BrandLogo from "./BrandLogo";
+import Image from "next/image";
+import { insuranceTypes } from "@/lib/insurance";
 
 export function Footer() {
 
   const { PHONE_NUMBER, COMPANY_EMAIL, ADDRESS } = useUtils();
+  
 
   return (
     <footer className="bg-foreground text-gray-300 border-t border-gray-800">
@@ -57,46 +60,16 @@ export function Footer() {
           <div>
             <h3 className="text-white mb-6">Our Services</h3>
             <ul className="space-y-3 text-sm">
-              <li>
+             { insuranceTypes.map((item, index) => (
+               <li key={index}>
                 <a
-                  href="#services"
+                  href={`/services/${item?.slug}`}
                   className="hover:text-[#042E4C] transition-colors"
                 >
-                  Business Insurance
+                  {item?.title }
                 </a>
               </li>
-              <li>
-                <a
-                  href="#services"
-                  className="hover:text-[#042E4C] transition-colors"
-                >
-                  Property Insurance
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="hover:text-[#042E4C] transition-colors"
-                >
-                  Commercial Motor
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="hover:text-[#042E4C] transition-colors"
-                >
-                  Professional Indemnity
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="hover:text-[#042E4C] transition-colors"
-                >
-                  Management Liability
-                </a>
-              </li>
+             ))}
             </ul>
           </div>
 
@@ -166,16 +139,39 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-gray-800">
           <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-500">
             <div className="flex items-center space-x-2">
-              <Shield className="h-4 w-4" />
-              <span>FSA Regulated</span>
+              {/* <Shield className="h-4 w-4" /> */}
+              <span>
+                <Image 
+                  src="/footer/bmia-2.png"
+                  alt="Logo"
+                  className=""
+                  priority
+                  height={20}
+                  width={100}
+                  />
+              </span>
             </div>
             <div className="flex items-center space-x-2">
-              <Shield className="h-4 w-4" />
-              <span>ISO Certified</span>
+              {/* <Shield className="h-4 w-4" /> */}
+              <Image 
+                  src="/footer/steadfast-2.png"
+                  alt="Logo"
+                  className=""
+                  priority
+                  height={20}
+                  width={100}
+                  />
             </div>
             <div className="flex items-center space-x-2">
-              <Shield className="h-4 w-4" />
-              <span>Award Winning Service</span>
+              {/* <Shield className="h-4 w-4" /> */}
+             <Image 
+                  src="/footer/niba.png"
+                  alt="Logo"
+                  className=""
+                  priority
+                  height={20}
+                  width={100}
+                  />
             </div>
           </div>
         </div>

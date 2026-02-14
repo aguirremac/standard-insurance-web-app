@@ -37,7 +37,7 @@ Business Insurance provides comprehensive coverage to protect your company again
 This insurance covers a wide range of risks, including theft, fire, natural disasters, and third-party claims, offering peace of mind to business owners and stakeholders. It can also include business interruption coverage, safeguarding your revenue if your operations are temporarily halted due to unforeseen events.
 
 Beyond financial protection, Business Insurance also supports risk management strategies. By analyzing your unique operational risks, insurers can help tailor a policy that reduces potential losses, improves resilience, and strengthens your company's overall risk profile.`,
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600",
+    image: "/insurance/business-insurance.jpeg",
     icon: Building2,
     benefits: [
       "Protection for business assets",
@@ -56,7 +56,7 @@ Property Insurance protects buildings, contents, and fixed assets against fire, 
 In addition to standard protection, policies can include coverage for business interruption, loss of rental income, and temporary accommodation costs. This ensures you remain financially stable even if your property suffers damage that affects income generation.
 
 Property Insurance also emphasizes risk assessment and preventive measures. Insurers often provide guidance on security systems, maintenance, and safety protocols to minimize claims and enhance the long-term resilience of your property investments.`,
-    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1600",
+    image: "/insurance/property-insurance.jpeg",
     icon: Home,
     benefits: [
       "Cover for buildings and contents",
@@ -75,7 +75,7 @@ Public Liability Insurance protects your business from claims made by third part
 Coverage includes legal defence costs, compensation claims, and settlement expenses, allowing businesses to handle potential lawsuits without jeopardizing financial stability. Whether it’s a slip and fall or accidental damage, this insurance provides critical financial protection.
 
 Additionally, Public Liability Insurance promotes trust and professionalism. Clients and partners are more likely to engage with a business that demonstrates responsibility and readiness to manage risks, enhancing your reputation and credibility in the marketplace.`,
-    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600",
+    image: "/insurance/public-liability.jpeg",
     icon: Shield,
     benefits: [
       "Third-party injury cover",
@@ -94,7 +94,7 @@ Commercial Motor Insurance provides cover for vehicles used for business purpose
 For businesses managing multiple vehicles, fleet policies offer simplified administration, consistent coverage, and potential cost savings. Optional extras can include roadside assistance, replacement vehicles, and legal assistance, providing comprehensive support on the road.
 
 This insurance not only safeguards assets but also enhances operational efficiency. By reducing downtime from vehicle damage and mitigating financial risks, companies can maintain smooth business operations and focus on growth and service delivery.`,
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600",
+    image: "/insurance/commercial-motor.jpg",
     icon: Car,
     benefits: [
       "Accidental damage cover",
@@ -113,7 +113,7 @@ Management Liability Insurance protects directors, officers, and managers agains
 Policies typically cover defence costs, settlements, and penalties related to employment disputes, mismanagement allegations, or regulatory breaches. This financial safeguard is crucial for maintaining leadership stability and attracting top talent.
 
 Moreover, Management Liability Insurance strengthens corporate governance. It encourages risk-aware decision-making and demonstrates to investors and stakeholders that the organization proactively manages managerial risks and responsibilities.`,
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600",
+    image: "/insurance/management-liability.jpeg",
     icon: Users,
     benefits: [
       "Directors & officers protection",
@@ -132,7 +132,7 @@ Construction Insurance provides comprehensive coverage for builders, contractors
 Coverage extends to public and product liability, protecting against third-party claims for injury or property damage related to construction activities. Additional options may include coverage for delays, subcontractor errors, and equipment breakdown.
 
 By mitigating financial risks, Construction Insurance allows contractors to focus on quality, safety, and project delivery. It also instills confidence in clients, demonstrating professionalism and a commitment to risk management.`,
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600",
+    image: "/insurance/construction-insurance.jpeg",
     icon: HardHat,
     benefits: [
       "Contract works insurance",
@@ -151,7 +151,7 @@ Professional Indemnity Insurance protects professionals against claims of neglig
 Policies cover legal defence costs, settlements, and compensation claims, allowing professionals to operate confidently and maintain client trust. It is particularly relevant for consultants, architects, engineers, and other service providers.
 
 Additionally, this insurance promotes business credibility. Clients feel reassured that professionals are accountable and backed by coverage that mitigates the risks of complex and high-stakes work.`,
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1600",
+    image: "/insurance/professional-indemnity.jpeg",
     icon: FileCheck,
     benefits: [
       "Negligence claim protection",
@@ -170,7 +170,7 @@ Trade Credit Insurance safeguards businesses against the risk of non-payment by 
 Coverage typically includes unpaid invoices due to insolvency, protracted default, or political risks. Insurers may provide credit assessment and monitoring tools to identify risky customers proactively.
 
 By stabilizing cash flow and mitigating financial risk, Trade Credit Insurance enables companies to expand their operations, negotiate better terms with suppliers, and focus on sustainable growth.`,
-    image: "https://images.unsplash.com/photo-1554224154-22dec7ec8818?q=80&w=1600",
+    image: "/insurance/trade-credit.jpeg",
     icon: TrendingUp,
     benefits: [
       "Protection against bad debts",
@@ -189,7 +189,7 @@ Industrial Special Risks Insurance is designed for large or complex businesses, 
 Coverage may include fire, explosion, machinery breakdown, natural disasters, and business interruption, tailored to the unique needs of industrial enterprises. Policies are highly flexible, allowing customization to match operational complexity.
 
 This insurance also supports risk management strategies and compliance requirements, providing businesses with financial stability, operational resilience, and peace of mind in high-stakes industrial environments.`,
-    image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1600",
+    image: "/insurance/industrial-special-risks.jpeg",
     icon: Factory,
     benefits: [
       "High-value asset protection",
