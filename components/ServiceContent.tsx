@@ -1,54 +1,10 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { QuoteButton } from "@/components/QuoteButton";
-import { getInsuranceBySlug, insuranceTypes } from "@/lib/insurance";
-import {
-  Building2,
-  Home,
-  Car,
-  Shield,
-  HardHat,
-  FileCheck,
-  TrendingUp,
-  Users,
-  Factory,
-} from "lucide-react";
 
-// Map icons by name (must match your insuranceTypes icon)
-const iconsMap: Record<string, any> = {
-  Building2,
-  Home,
-  Car,
-  Shield,
-  HardHat,
-  FileCheck,
-  TrendingUp,
-  Users,
-  Factory,
-};
-
-export default function ServicePage() {
-  const params = useParams();
-  const { slug } = params;
-
-  const [insurance, setInsurance] = useState<any>(null);
-
-  useEffect(() => {
-    const data = getInsuranceBySlug(slug);
-    if (data) setInsurance(data);
-  }, [slug]);
-
-  if (!insurance) {
-    return <p className="text-center py-20">Loading or service not found...</p>;
-  }
-
-  // Resolve icon component
-  const Icon = iconsMap[insurance.icon.name] || Shield;
-
+export default function ServiceContent({ insurance, Icon }: { insurance: any; Icon: any }) {
   return (
     <main>
       {/* HERO */}
@@ -69,11 +25,13 @@ export default function ServicePage() {
         <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-white">
-          {/* <Icon className="h-10 w-10 mb-4 text-primary" /> */}
+          <Icon className="h-10 w-10 mb-4 text-primary" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             {insurance.title}
           </h1>
-          <p className="max-w-xl text-lg text-white/90">{insurance.description}</p>
+          <p className="max-w-xl text-lg text-white/90">
+            {insurance.description}
+          </p>
         </div>
       </motion.section>
 
@@ -86,7 +44,9 @@ export default function ServicePage() {
           viewport={{ once: true }}
           className="md:col-span-2 space-y-5"
         >
-          <h2 className="text-2xl font-semibold mb-4">About {insurance.title}</h2>
+          <h2 className="text-2xl font-semibold mb-4">
+            About {insurance.title}
+          </h2>
           {insurance.longDescription.split("\n").map((para: string, idx: number) => {
             const trimmed = para.trim();
             if (!trimmed) return null;

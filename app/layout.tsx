@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Standard Insurance",
-  description: "Standard Insurance Website",
+  description: "Standard Insurance was founded with a simple belief: insurance should be clear, practical, and built around real people - not paperwork.",
   icons: {
     icon: "/favicon-light.png"
   }

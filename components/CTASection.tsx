@@ -1,56 +1,112 @@
+"use client";
+
 import useUtils from "@/hooks/use-utils";
 import { Button } from "./ui/button";
 import { ArrowRight, Phone } from "lucide-react";
+import { motion } from "framer-motion";
+
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.14,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 export function CTASection() {
+  const { PHONE_NUMBER } = useUtils();
 
-  const { PHONE_NUMBER } = useUtils()
   return (
-    <section className="py-20 bg-gradient-to-br from-[#042E4C] to-[#063d64] text-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+    <motion.section
+      initial={{ opacity: 0, scale: 0.98 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="py-20 bg-gradient-to-br from-[#042E4C] to-[#063d64] text-white relative overflow-hidden"
+    >
+      {/* Animated Background Pattern */}
+      <motion.div
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 opacity-10"
+      >
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
             backgroundSize: "40px 40px",
           }}
         />
-      </div>
+      </motion.div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-4xl md:text-5xl mb-6">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      >
+        <motion.h2
+          variants={item}
+          className="text-4xl md:text-5xl mb-6"
+        >
           Ready to Protect What Matters?
-        </h2>
-        <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-10">
+        </motion.h2>
+
+        <motion.p
+          variants={item}
+          className="text-xl text-gray-200 max-w-3xl mx-auto mb-10"
+        >
           Get a free, no-obligation quote today and discover why thousands of
           clients trust Standard Insurance for their coverage needs.
-        </p>
+        </motion.p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button
-            size="lg"
-            className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-6"
-            onClick={() => (window.location.href = "#quote")}
-          >
-            Get Your Free Quote
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-2 bg-accent border-white text-white text-lg px-8 py-6"
-            onClick={() => (window.location.href = `tel:${PHONE_NUMBER}`)}
-          >
-            <Phone className="mr-2 h-5 w-5" />
-            Call Now: {PHONE_NUMBER}
-          </Button>
-        </div>
+        <motion.div
+          variants={item}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-6"
+              onClick={() => (window.location.href = "#quote")}
+            >
+              Get Your Free Quote
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </motion.div>
 
-        <div className="mt-12 text-sm text-gray-300">
+          <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 bg-accent border-white text-white text-lg px-8 py-6"
+              onClick={() => (window.location.href = `tel:${PHONE_NUMBER}`)}
+            >
+              <Phone className="mr-2 h-5 w-5" />
+              Call Now: {PHONE_NUMBER}
+            </Button>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          variants={item}
+          className="mt-12 text-sm text-gray-300"
+        >
           <p>Available Monday - Friday, 9am - 5pm EST</p>
-        </div>
-      </div>
-    </section>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 }
