@@ -8,6 +8,7 @@ import useUtils from "@/hooks/use-utils";
 import { useRouter, usePathname } from "next/navigation";
 import { insuranceTypes } from "@/lib/insurance";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 type NavItem = {
   label: string;
@@ -15,23 +16,45 @@ type NavItem = {
   subItems?: { label: string; href: string }[];
 };
 
+const LANGUAGES = [
+  { code: "EN", label: "English", flag: "🇺🇸" },
+  { code: "KO", label: "한국어", flag: "🇰🇷" },
+];
+
+
 export function Header() {
   const [language, setLanguage] = useState<"EN" | "KO">("EN");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [menuValue, setMenuValue] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-
   const pathname = usePathname();
   const route = useRouter();
   const { PHONE_NUMBER } = useUtils();
 
+  const handleSetLanguage = (langCode: "EN" | "KO") => {
+      setLanguage(langCode)
+      localStorage.setItem('standard-insurance-lang', langCode)
+  }
+
+  useEffect(() => {
+    // Only run on the client
+    if (typeof window !== "undefined") {
+      const savedLang = localStorage.getItem("standard-insurance-lang");
+      if (savedLang === "KO") {
+        // Use a setTimeout to avoid React 18 cascading render warning
+        setTimeout(() => setLanguage("KO"), 0);
+      }
+    }
+  }, []);
+
+
   useEffect(() => {
     setMenuValue(null);
+    setActiveIndex(null);
   }, [pathname]);
 
-  const toggleLanguage = () =>
-    setLanguage((prev) => (prev === "EN" ? "KO" : "EN"));
+
 
   const navigateToHome = () => route.push("/");
   const goToQuoteSection = () => route.push("/#quote");
@@ -47,19 +70,13 @@ export function Header() {
         label: "Our Services",
         subItems: [
           { label: "Insurance Review", href: "/services/insurance-review" },
-          {
-            label: "Competitive Quotation",
-            href: "/services/competitive-quotation",
-          },
+          { label: "Competitive Quotation", href: "/services/competitive-quotation" },
           { label: "Claim Service", href: "/services/claim-service" },
         ],
       },
       {
         label: "Insurance Types",
-        subItems: [
-          ...insuranceTypesMappedArr,
-          { label: "All Insurance Types", href: "/insurance" },
-        ],
+        subItems: [...insuranceTypesMappedArr, { label: "All Insurance Types", href: "/insurance" }],
       },
       { label: "About Us", href: "/about-us" },
       { label: "Contact Us", href: "/contact" },
@@ -79,7 +96,7 @@ export function Header() {
   };
 
   return (
-    <header className="bg-primary text-white sticky top-0 z-50 shadow-md ">
+    <header className="bg-primary text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <BrandLogo color="light" onClick={navigateToHome} />
@@ -87,7 +104,7 @@ export function Header() {
           {/* Desktop Nav */}
           <NavigationMenu.Root
             className="hidden md:flex cursor-pointer"
-            value={menuValue}
+            value={menuValue ?? ""}
             onValueChange={(val) => setMenuValue(val)}
           >
             <NavigationMenu.List className="flex items-center space-x-6 cursor-pointer">
@@ -147,14 +164,38 @@ export function Header() {
 
           {/* Controls */}
           <div className="hidden lg:flex items-center space-x-3">
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-white/10 transition-colors"
-            >
-              <Globe className="h-4 w-4" />
-              <span className="text-sm">{language}</span>
-            </button>
+            {/* Language Dropdown */}
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger
+                className="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-white/10 transition-colors"
+              >
+                {/* <Globe className="h-4 w-4" /> */}
+                <span className="text-sm">
+                  {LANGUAGES.find((l) => l.code === language)?.flag} {language}
+                </span>
+                <ChevronDown className="h-3 w-3" />
+              </DropdownMenu.Trigger>
 
+              <DropdownMenu.Content
+                className="bg-white text-black rounded-md shadow-lg py-1 min-w-[120px]"
+                sideOffset={5}
+              >
+                {LANGUAGES.map((lang) => (
+                  <DropdownMenu.Item
+                    key={lang.code}
+                    className={`px-4 py-2 cursor-pointer text-sm hover:bg-gray-100 flex items-center gap-2 ${
+                      language === lang.code ? "font-semibold" : ""
+                    }`}
+                    onClick={() => handleSetLanguage(lang.code as "EN" | "KO")}
+                  >
+                    <span>{lang.flag}</span>
+                    <span>{lang.label}</span>
+                  </DropdownMenu.Item>
+                ))}
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
+
+            {/* Phone */}
             <a
               href={`tel:${PHONE_NUMBER}`}
               className="flex items-center gap-2 px-2 py-2 rounded-full bg-accent ring-button shadow-lg hover:scale-110 transition-transform"
@@ -162,6 +203,7 @@ export function Header() {
               <Phone className="h-4 w-4" />
             </a>
 
+            {/* Quote Button */}
             <Button
               onClick={goToQuoteSection}
               size="lg"
@@ -181,54 +223,50 @@ export function Header() {
         </div>
 
         {/* Mobile Menu */}
-    {/* Mobile Menu */}
-{/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden py-4 border-t border-white/10">
-          <nav className="flex flex-col space-y-2">
-            {navItems[language].map((item, idx) => {
+        {mobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-white/10">
+            <nav className="flex flex-col space-y-2">
+              {navItems[language].map((item, idx) => {
                 const isOpen = activeIndex === idx;
 
-              return (
-                <div key={idx} className="flex flex-col">
-                  {/* Parent Label */}
-                  <button
-                    onClick={() =>
-                      setActiveIndex(isOpen ? null : idx)
-                    }
-                    className="px-4 py-2 flex justify-between items-center hover:bg-white/10 rounded-md font-bold"
-                  >
-                    {item.label}
-                    {item.subItems && (
-                      <ChevronDown
-                        className={`h-4 w-4 transition-transform ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
-                      />
-                    )}
-                  </button>
+                return (
+                  <div key={idx} className="flex flex-col">
+                    {/* Parent Label */}
+                    <button
+                      onClick={() => setActiveIndex(isOpen ? null : idx)}
+                      className="px-4 py-2 flex justify-between items-center hover:bg-white/10 rounded-md font-bold"
+                    >
+                      {item.label}
+                      {item.subItems && (
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${
+                            isOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      )}
+                    </button>
 
-                  {/* Collapsible Sub-items */}
-                  {item.subItems && isOpen && (
-                    <div className="ml-4 flex flex-col space-y-1 opacity-80">
-                      {item.subItems.map((sub, subIdx) => (
-                        <a
-                          key={subIdx}
-                          href={sub.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="px-4 py-2 hover:bg-white/20 rounded-md"
-                        >
-                          {sub.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </nav>
-        </div>
-      )}
+                    {/* Collapsible Sub-items */}
+                    {item.subItems && isOpen && (
+                      <div className="ml-4 flex flex-col space-y-1 opacity-80">
+                        {item.subItems.map((sub, subIdx) => (
+                          <a
+                            key={subIdx}
+                            href={sub.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="px-4 py-2 hover:bg-white/20 rounded-md"
+                          >
+                            {sub.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
