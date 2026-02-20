@@ -45,11 +45,11 @@ export default function AboutUsPage() {
           <div className="md:w-1/2 space-y-4">
             <h2 className="text-3xl font-bold mb-4">Our History</h2>
             <p className="text-gray-700">
-              Founded with a mission to simplify insurance in Australia, Standard Insurance has grown from a small advisory office to a trusted partner for thousands of individuals and businesses nationwide.
+              Standard Insurance Services was established in 2025 by an insurance broker, Jinik Kim with 17 years of insurance experiences across insurance types and borders.
             </p>
-            <p className="text-gray-700">
+            {/* <p className="text-gray-700">
               Over the decades, we have focused on transparency, customer-first solutions, and building long-term relationships. Our experience ensures you get insurance coverage tailored to real Australian lifestyles and businesses.
-            </p>
+            </p> */}
           </div>
           <motion.div
             className="md:w-1/2 mt-8 md:mt-0 relative h-64 md:h-80 rounded-xl overflow-hidden shadow-lg"

@@ -50,7 +50,7 @@ export function InsuranceCards({ showAll }: { showAll?: boolean }) {
         >
           <div>
             <span className="inline-flex px-4 py-1.5 rounded-full text-sm bg-primary/10 text-primary mb-4">
-              Services
+              Insurance Types
             </span>
             <h2 className="text-4xl font-semibold text-gray-900 mb-3">
               What do we do
@@ -68,7 +68,7 @@ export function InsuranceCards({ showAll }: { showAll?: boolean }) {
                 className="rounded-full border-gray-300 text-gray-700 hover:border-primary hover:text-primary"
                 onClick={() => (window.location.href = "/services")}
               >
-                View all services
+                View all types
               </Button>
             </motion.div>
           )}

@@ -25,25 +25,26 @@ export function Header() {
   const navigateToHome = () => route.push("/");
 
 
-  const insuranceTypesMappedArr = insuranceTypes.map((item) => ( {label: item.title, href: `/services/${item.slug}` }))
+  const insuranceTypesMappedArr = insuranceTypes.map((item) => ( {label: item.title, href: `/insurance/${item.slug}` }))
 
   const navItems: Record<"EN" | "KO", NavItem[]> = {
     EN: [
-      {
-        label: "Services",
-        subItems: [...insuranceTypesMappedArr, { label: "All Services", href: "/services"}]
-      },
-      {
-        label: "About",
-        href: "/about-us",
-      },
-
-      {
-        label: "Claims",
-        href: "/claims",
+        {
+        label: "Our Services",
+        href: "/",
         subItems: [
-          { label: "Lodge Claim", href: "/claims/lodge-claim" },
+          { label: "Insurance Review", href: "/services/insurance-review" },
+          { label: "Competitive Quotation", href: "/services/competitive-quotation" },
+          { label: "Claim Service", href: "/services/claim-service" },
         ],
+      },
+      {
+        label: "Insurance Types",
+        subItems: [...insuranceTypesMappedArr, { label: "All Insurance Types", href: "/insurance"}]
+      },
+      {
+        label: "About Us",
+        href: "/about-us",
       },
       { label: "Contact Us", href: "/contact" },
     ],
@@ -135,12 +136,12 @@ export function Header() {
                   <a
                     href={item.href || "#"}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="px-4 py-2 hover:bg-white/10 rounded-md"
+                    className="px-4 py-2 hover:bg-white/10 rounded-md font-bold"
                   >
                     {item.label}
                   </a>
                   {item.subItems && (
-                    <div className="ml-4 flex flex-col space-y-1">
+                    <div className="ml-4 flex flex-col space-y-1 opacity-70">
                       {item.subItems.map((sub, subIdx) => (
                         <a
                           key={subIdx}

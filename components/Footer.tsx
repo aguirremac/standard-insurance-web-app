@@ -63,7 +63,7 @@ export function Footer() {
              { insuranceTypes.map((item, index) => (
                <li key={index}>
                 <a
-                  href={`/services/${item?.slug}`}
+                  href={`/insurance/${item?.slug}`}
                   className="hover:text-[#042E4C] transition-colors"
                 >
                   {item?.title }
@@ -141,7 +141,8 @@ export function Footer() {
             <div className="flex items-center space-x-2">
               {/* <Shield className="h-4 w-4" /> */}
               <span>
-                <Image 
+                <a href="https://bmianetwork.com.au/">
+                  <Image 
                   src="/footer/bmia-2.png"
                   alt="Logo"
                   className=""
@@ -149,11 +150,13 @@ export function Footer() {
                   height={20}
                   width={100}
                   />
+                </a>
               </span>
             </div>
             <div className="flex items-center space-x-2">
               {/* <Shield className="h-4 w-4" /> */}
-              <Image 
+              <a href="https://www.steadfast.com.au/">
+                <Image 
                   src="/footer/steadfast-2.png"
                   alt="Logo"
                   className=""
@@ -161,10 +164,12 @@ export function Footer() {
                   height={20}
                   width={100}
                   />
+              </a>
             </div>
             <div className="flex items-center space-x-2">
               {/* <Shield className="h-4 w-4" /> */}
-             <Image 
+             <a href="https://niba.com.au/">
+              <Image 
                   src="/footer/niba.png"
                   alt="Logo"
                   className=""
@@ -172,6 +177,7 @@ export function Footer() {
                   height={20}
                   width={100}
                   />
+             </a>
             </div>
           </div>
         </div>

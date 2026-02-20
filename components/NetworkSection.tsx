@@ -4,18 +4,19 @@ import Image from "next/image";
 
 export default function NetworkSection() {
   const logos = [
-    "/network/logo-371.png",
-    "/network/logo-378.png",
-    "/network/logo-385.png",
-    "/network/logo-391.png",
-    "/network/logo-392.png",
-    "/network/logo-399.png",
-    "/network/logo-403.png",
-    "/network/logo-410.png",
-    "/network/logo-413.png",
-    "/network/logo-418.png",
-    "/network/logo-419.png",
-    "/network/logo-420.png",
+    "/footer/bmia-2.png",
+    "/footer/steadfast-2.png",
+    "/footer/niba.png",
+    "/footer/bmia-2.png",
+    "/footer/steadfast-2.png",
+    "/footer/niba.png",
+    "/footer/bmia-2.png",
+    "/footer/steadfast-2.png",
+    "/footer/niba.png",
+    "/footer/bmia-2.png",
+    "/footer/steadfast-2.png",
+    "/footer/niba.png",
+    
   ];
 
   // Duplicate the logos array to make seamless scroll
@@ -26,7 +27,7 @@ export default function NetworkSection() {
       <div className="max-w-6xl mx-auto text-center mb-12">
         <h2 className="text-3xl font-bold mb-4">Our Network</h2>
         <p className="text-gray-700">
-          Standard Insurance collaborates with a wide network of trusted providers across Australia, ensuring comprehensive coverage options for our clients. Our partnerships allow us to provide competitive premiums and personalised solutions no matter where you are.
+          We provide dedicated and seamless insurance support through strong Iinsurance networks.
         </p>
       </div>
 
