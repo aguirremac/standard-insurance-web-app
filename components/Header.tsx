@@ -19,6 +19,8 @@ export function Header() {
   const [language, setLanguage] = useState<"EN" | "KO">("EN");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [menuValue, setMenuValue] = useState<string | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
 
   const pathname = usePathname();
   const route = useRouter();
@@ -179,20 +181,36 @@ export function Header() {
         </div>
 
         {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/10">
-            <nav className="flex flex-col space-y-2">
-              {navItems[language].map((item, idx) => (
+    {/* Mobile Menu */}
+{/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden py-4 border-t border-white/10">
+          <nav className="flex flex-col space-y-2">
+            {navItems[language].map((item, idx) => {
+                const isOpen = activeIndex === idx;
+
+              return (
                 <div key={idx} className="flex flex-col">
-                  <a
-                    href={item.href || "#"}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="px-4 py-2 hover:bg-white/10 rounded-md font-bold"
+                  {/* Parent Label */}
+                  <button
+                    onClick={() =>
+                      setActiveIndex(isOpen ? null : idx)
+                    }
+                    className="px-4 py-2 flex justify-between items-center hover:bg-white/10 rounded-md font-bold"
                   >
                     {item.label}
-                  </a>
-                  {item.subItems && (
-                    <div className="ml-4 flex flex-col space-y-1 opacity-70">
+                    {item.subItems && (
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    )}
+                  </button>
+
+                  {/* Collapsible Sub-items */}
+                  {item.subItems && isOpen && (
+                    <div className="ml-4 flex flex-col space-y-1 opacity-80">
                       {item.subItems.map((sub, subIdx) => (
                         <a
                           key={subIdx}
@@ -206,10 +224,11 @@ export function Header() {
                     </div>
                   )}
                 </div>
-              ))}
-            </nav>
-          </div>
-        )}
+              );
+            })}
+          </nav>
+        </div>
+      )}
       </div>
     </header>
   );
