@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import BrandLogo from "./BrandLogo";
-import { Globe, Menu, X, Phone  } from "lucide-react";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "./ui/select";
+import { Globe, Menu, X, Phone, ChevronDown } from "lucide-react";
 import useUtils from "@/hooks/use-utils";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { insuranceTypes } from "@/lib/insurance";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 type NavItem = {
   label: string;
@@ -18,34 +18,48 @@ type NavItem = {
 export function Header() {
   const [language, setLanguage] = useState<"EN" | "KO">("EN");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuValue, setMenuValue] = useState<string | null>(null);
 
-  const toggleLanguage = () => setLanguage(prev => (prev === "EN" ? "KO" : "EN"));
-  const { PHONE_NUMBER } = useUtils();
+  const pathname = usePathname();
   const route = useRouter();
+  const { PHONE_NUMBER } = useUtils();
+
+  useEffect(() => {
+    setMenuValue(null);
+  }, [pathname]);
+
+  const toggleLanguage = () =>
+    setLanguage((prev) => (prev === "EN" ? "KO" : "EN"));
+
   const navigateToHome = () => route.push("/");
+  const goToQuoteSection = () => route.push("/#quote");
 
-
-  const insuranceTypesMappedArr = insuranceTypes.map((item) => ( {label: item.title, href: `/insurance/${item.slug}` }))
+  const insuranceTypesMappedArr = insuranceTypes.map((item) => ({
+    label: item.title,
+    href: `/insurance/${item.slug}`,
+  }));
 
   const navItems: Record<"EN" | "KO", NavItem[]> = {
     EN: [
-        {
+      {
         label: "Our Services",
-        href: "/",
         subItems: [
           { label: "Insurance Review", href: "/services/insurance-review" },
-          { label: "Competitive Quotation", href: "/services/competitive-quotation" },
+          {
+            label: "Competitive Quotation",
+            href: "/services/competitive-quotation",
+          },
           { label: "Claim Service", href: "/services/claim-service" },
         ],
       },
       {
         label: "Insurance Types",
-        subItems: [...insuranceTypesMappedArr, { label: "All Insurance Types", href: "/insurance"}]
+        subItems: [
+          ...insuranceTypesMappedArr,
+          { label: "All Insurance Types", href: "/insurance" },
+        ],
       },
-      {
-        label: "About Us",
-        href: "/about-us",
-      },
+      { label: "About Us", href: "/about-us" },
       { label: "Contact Us", href: "/contact" },
     ],
     KO: [
@@ -63,41 +77,74 @@ export function Header() {
   };
 
   return (
-    <header className="bg-primary text-white sticky top-0 z-50 shadow-md">
+    <header className="bg-primary text-white sticky top-0 z-50 shadow-md ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <BrandLogo color="light" onClick={navigateToHome} />
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-6">
-            {navItems[language].map((item, idx) =>
-              item.subItems ? (
-                <Select key={idx} onValueChange={(value) => route.push(value)}>
-                  <SelectTrigger className="bg-transparent text-white border-none hover:text-gray-200 flex items-center gap-1">
-                     <span>{item.label}</span>
-                  </SelectTrigger>
-                  <SelectContent className="bg-white text-black rounded-md ">
-                    {item.subItems.map((sub, subIdx) => (
-                      <SelectItem key={subIdx} value={sub.href}>
-                        {sub.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              ) : (
-                <a
-                  key={idx}
-                  href={item.href}
-                  className="hover:text-gray-200 transition-colors text-sm text-nowrap"
-                >
-                  {item.label}
-                </a>
-              )
-            )}
-          </nav>
+          <NavigationMenu.Root
+            className="hidden md:flex cursor-pointer"
+            value={menuValue}
+            onValueChange={(val) => setMenuValue(val)}
+          >
+            <NavigationMenu.List className="flex items-center space-x-6 cursor-pointer">
+              {navItems[language].map((item, idx) =>
+                item.subItems ? (
+                  <NavigationMenu.Item key={idx} value={item.label}>
+                    <NavigationMenu.Trigger
+                      onClick={() =>
+                        setMenuValue((prev) =>
+                          prev === item.label ? null : item.label
+                        )
+                      }
+                      className="flex items-center gap-1 text-sm hover:text-white transition-colors"
+                    >
+                      {item.label}
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform ${
+                          menuValue === item.label ? "rotate-180" : ""
+                        }`}
+                      />
+                    </NavigationMenu.Trigger>
+
+                    <NavigationMenu.Content
+                      onPointerDownOutside={() => setMenuValue(null)}
+                      onEscapeKeyDown={() => setMenuValue(null)}
+                      className="absolute top-full mt-3 rounded-xl bg-white text-black shadow-lg p-4 min-w-[220px]"
+                    >
+                      <ul className="flex flex-col">
+                        {item.subItems.map((sub, subIdx) => (
+                          <li key={subIdx}>
+                            <button
+                              onClick={() => route.push(sub.href)}
+                              className="text-left w-full px-2 py-2 rounded-md hover:bg-gray-100 text-sm cursor-pointer"
+                            >
+                              {sub.label}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenu.Content>
+                  </NavigationMenu.Item>
+                ) : (
+                  <NavigationMenu.Item key={idx}>
+                    <NavigationMenu.Link asChild>
+                      <button
+                        onClick={() => route.push(item.href!)}
+                        className="text-sm hover:text-white transition-colors"
+                      >
+                        {item.label}
+                      </button>
+                    </NavigationMenu.Link>
+                  </NavigationMenu.Item>
+                )
+              )}
+            </NavigationMenu.List>
+          </NavigationMenu.Root>
 
           {/* Controls */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-3">
             <button
               onClick={toggleLanguage}
               className="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-white/10 transition-colors"
@@ -113,7 +160,11 @@ export function Header() {
               <Phone className="h-4 w-4" />
             </a>
 
-            <Button size="lg" className="bg-white text-black font-bold hover:bg-gray-100 rounded-full py-4">
+            <Button
+              onClick={goToQuoteSection}
+              size="lg"
+              className="bg-white text-black font-bold hover:bg-gray-100 rounded-full py-4"
+            >
               {language === "EN" ? "Get a Quote" : "견적 받기"}
             </Button>
           </div>

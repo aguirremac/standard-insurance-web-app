@@ -21,7 +21,7 @@ export function HeroSection({ heroImageSrc }: { heroImageSrc?: string }) {
   };
 
   return (
-    <section className="relative h-[75svh] overflow-hidden flex items-center">
+    <section className="relative h-fit  overflow-hidden flex items-center">
       {/* Background */}
       <div className="absolute inset-0">
         <Image

@@ -127,13 +127,7 @@ export function ContactSection() {
                   icon: MapPin,
                   label: "Office",
                   value: ADDRESS,
-                },
-                {
-                  icon: Clock,
-                  label: "Business Hours",
-                  value: "Mon–Fri: 9am–5pm",
-                  sub: "Sat: 10am–2pm",
-                },
+                }
               ].map(({ icon: Icon, label, value, sub }, i) => (
                 <motion.div
                   key={i}
@@ -161,16 +155,16 @@ export function ContactSection() {
               variants={itemVariants}
               className="rounded-xl overflow-hidden shadow-lg h-64 bg-gray-200"
             >
-              <iframe
-                src="https://www.google.com/maps?q=Spaces,+80+Ann+Street,+Brisbane+City+QLD+4000,+Australia&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Office Location"
-              />
+            <iframe
+              src="https://www.google.com/maps?q=Heritage+Lane,+80+Ann+Street,+Brisbane+City+QLD+4000,+Australia&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Office Location"
+            />
             </motion.div>
           </motion.div>
 

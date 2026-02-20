@@ -3,7 +3,7 @@ export default function useUtils() {
 
   const COMPANY_EMAIL = "info@standardinsurance.com.au"
 
-  const ADDRESS = "4F Spaces, 80 Ann Street, Brisbane QLD 4000"
+  const ADDRESS = "80 Ann Street Brisbane QLD4000"
 
  
 
