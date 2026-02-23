@@ -9,6 +9,7 @@ import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import Image from "next/image";
 import useUtils from "@/hooks/use-utils";
 import { motion, Variants } from "framer-motion";
+import { useToast } from "./ui/toast-provider";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -20,6 +21,9 @@ export function ContactSection() {
   });
 
   const { PHONE_NUMBER, COMPANY_EMAIL, ADDRESS } = useUtils();
+  const { showToast } = useToast();
+
+  const [isFormSubmitting, setIsFormSubmitting] = useState(false)
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -27,17 +31,6 @@ export function ContactSection() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Message sent! We'll get back to you shortly.");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-    });
-  };
 
   const containerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -55,6 +48,43 @@ export function ContactSection() {
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  const handleSubmit = async (event: Event) => {
+    event.preventDefault();
+    setIsFormSubmitting(true)
+   try {
+     const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData)
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+
+     showToast("Message sent successfully!", "success");
+    } else {
+      showToast(data.error || "Something went wrong.", "error");
+    }
+        
+   } catch (error) {
+      console.error(error);
+      showToast("Failed to send message.", "error");
+      
+   } finally {
+    setIsFormSubmitting(false)
+   }
   };
 
   return (
@@ -242,6 +272,7 @@ export function ContactSection() {
               <Button
                 type="submit"
                 size="lg"
+                disabled={isFormSubmitting || !formData.email || !formData.message || !formData.name || !formData.subject || !formData.phone}
                 className="w-full text-white rounded-full bg-primary hover:bg-primary/90"
               >
                 Send message
