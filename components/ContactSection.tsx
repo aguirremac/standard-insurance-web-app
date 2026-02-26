@@ -8,7 +8,7 @@ import { Textarea } from "./ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import Image from "next/image";
 import useUtils from "@/hooks/use-utils";
-import { m, motion, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useToast } from "./ui/toast-provider";
 import { useLanguage } from "@/contexts/LanguageContext";
 
