@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
-import { insuranceTypes } from "@/lib/insurance";
+import { insuranceTypesEN, insuranceTypeKOR } from "@/lib/insurance";
 
 import {
   Carousel,
@@ -20,9 +20,19 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel"; // adjust path
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function InsuranceCardsCarousel({ showAll }: { showAll?: boolean }) {
-  const displayedInsurance = showAll ? insuranceTypes : insuranceTypes.slice(0, 6);
+
+  const { language } = useLanguage();
+
+  const displayedInsurance = showAll
+    ? language === "EN"
+      ? insuranceTypesEN
+      : insuranceTypeKOR
+    : language === "EN"
+    ? insuranceTypesEN.slice(0, 6)
+    : insuranceTypeKOR.slice(0, 6);
 
   return (
     <section id="services" className="pt-20 pb-20 bg-neutral-50">
