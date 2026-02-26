@@ -4,6 +4,7 @@ import useUtils from "@/hooks/use-utils";
 import { Button } from "./ui/button";
 import { ArrowRight, Phone } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const containerVariants: Variants = {
   hidden: {},
@@ -29,6 +30,25 @@ const itemVariants: Variants = {
 
 export function CTASection() {
   const { PHONE_NUMBER } = useUtils();
+
+  const { language } = useLanguage();
+
+  const texts: Record<"EN" | "KO", Record<string, string>> = {
+    EN: {
+      header: "Ready to Protect What Matters?",
+      description:
+        "Get a free, no-obligation quote today and discover why thousands of clients trust Standard Insurance for their coverage needs.",
+      viewQuoteButton: "Get Your Free Quote",
+      callNowButton: `Call Now: ${PHONE_NUMBER}`,
+    },
+    KO: {
+      header: "중요한 것을 보호할 준비가 되셨나요?",
+      description:
+        "오늘 무료로 견적을 받아보시고 수천 명의 고객이 Standard Insurance 를 신뢰하는 이유를 알아보세요.",
+      viewQuoteButton: "무료 견적 받기",
+      callNowButton: `지금 전화하기: ${PHONE_NUMBER}`,
+    },
+  }
 
   return (
     <motion.section
@@ -62,15 +82,14 @@ export function CTASection() {
         viewport={{ once: true }}
       >
         <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl mb-6">
-          Ready to Protect What Matters?
+          {texts[language].header}
         </motion.h2>
 
         <motion.p
           variants={itemVariants}
           className="text-xl text-gray-200 max-w-3xl mx-auto mb-10"
         >
-          Get a free, no-obligation quote today and discover why thousands of
-          clients trust Standard Insurance for their coverage needs.
+          {texts[language].description}
         </motion.p>
 
         <motion.div
@@ -83,7 +102,7 @@ export function CTASection() {
               className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-6"
               onClick={() => (window.location.href = "#quote")}
             >
-              Get Your Free Quote
+              {texts[language].viewQuoteButton}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>
@@ -96,13 +115,13 @@ export function CTASection() {
               onClick={() => (window.location.href = `tel:${PHONE_NUMBER}`)}
             >
               <Phone className="mr-2 h-5 w-5" />
-              Call Now: {PHONE_NUMBER}
+              {texts[language].callNowButton}
             </Button>
           </motion.div>
         </motion.div>
 
         <motion.div variants={itemVariants} className="mt-12 text-sm text-gray-300">
-          <p>Available Monday - Friday, 9am - 5pm EST</p>
+          <p>{texts[language].availabilityText}</p>
         </motion.div>
       </motion.div>
     </motion.section>

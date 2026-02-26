@@ -4,6 +4,7 @@ import { Shield, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function HeroSection({ heroImageSrc }: { heroImageSrc?: string }) {
   const container: Variants = {
@@ -19,6 +20,27 @@ export function HeroSection({ heroImageSrc }: { heroImageSrc?: string }) {
     hidden: { opacity: 0, y: 24 },
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
+
+  const { language } = useLanguage();
+
+  const texts: Record<"EN" | "KO", Record<string, string>> = {
+    EN: {
+      badge: "Trusted protection from day one",
+      heading: "Comprehensive Insurance Coverage You Can Trust",
+      description:
+        "Protect what matters most with tailored insurance solutions for your business and personal needs. Fast quotes, expert advice, and exceptional service.",
+      getQuote: "Get a Free Quote",
+      contactUs: "Contact Us",
+    },
+    KO: {
+      badge: "첫날부터 신뢰할 수 있는 보호",
+      heading: "신뢰할 수 있는 종합 보험 보장",
+      description:
+        "비즈니스와 개인의 필요에 맞춘 맞춤형 보험 솔루션으로 가장 중요한 것을 보호하세요. 빠른 견적, 전문가 조언 및 탁월한 서비스.",
+      getQuote: "무료 견적 받기",
+      contactUs: "문의하기",
+    },
+  }
 
   return (
     <section className="relative h-fit  overflow-hidden flex items-center">
@@ -74,7 +96,7 @@ export function HeroSection({ heroImageSrc }: { heroImageSrc?: string }) {
             >
               <Shield className="h-4 w-4" color="white" />
               <span className="text-white/90">
-                Trusted protection from day one
+                { texts[language].badge }
               </span>
             </motion.div>
 
@@ -83,7 +105,7 @@ export function HeroSection({ heroImageSrc }: { heroImageSrc?: string }) {
               variants={item}
               className="text-white text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-6xl"
             >
-              Comprehensive Insurance Coverage You Can Trust
+              { texts[language].heading }
             </motion.h1>
 
             {/* Description */}
@@ -91,9 +113,7 @@ export function HeroSection({ heroImageSrc }: { heroImageSrc?: string }) {
               variants={item}
               className="max-w-xl text-lg leading-relaxed text-white/80 md:text-xl"
             >
-              Protect what matters most with tailored insurance solutions for
-              your business and personal needs. Fast quotes, expert advice, and
-              exceptional service.
+              { texts[language].description }
             </motion.p>
 
             {/* CTAs */}
@@ -107,7 +127,7 @@ export function HeroSection({ heroImageSrc }: { heroImageSrc?: string }) {
                   className="h-12 rounded-full bg-white px-7 text-black font-semibold hover:bg-white/90"
                   onClick={() => (window.location.href = "#quote")}
                 >
-                  Get a Free Quote
+                  { texts[language].getQuote }
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </motion.div>
@@ -119,7 +139,7 @@ export function HeroSection({ heroImageSrc }: { heroImageSrc?: string }) {
                   className="h-12 rounded-full border-white/30 bg-white/0 px-7 text-white hover:bg-white/10"
                   onClick={() => (window.location.href = "#contact")}
                 >
-                  Contact Us
+                  { texts[language].contactUs }
                 </Button>
               </motion.div>
             </motion.div>

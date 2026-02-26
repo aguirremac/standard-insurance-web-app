@@ -6,9 +6,10 @@ import BrandLogo from "./BrandLogo";
 import { Globe, Menu, X, Phone, ChevronDown } from "lucide-react";
 import useUtils from "@/hooks/use-utils";
 import { useRouter, usePathname } from "next/navigation";
-import { insuranceTypes } from "@/lib/insurance";
+import { insuranceTypesEN, insuranceTypeKOR } from "@/lib/insurance";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type NavItem = {
   label: string;
@@ -23,7 +24,7 @@ const LANGUAGES = [
 
 
 export function Header() {
-  const [language, setLanguage] = useState<"EN" | "KO">("EN");
+  const { language, setLanguage } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [menuValue, setMenuValue] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -37,21 +38,12 @@ export function Header() {
       localStorage.setItem('standard-insurance-lang', langCode)
   }
 
-  useEffect(() => {
-    // Only run on the client
-    if (typeof window !== "undefined") {
-      const savedLang = localStorage.getItem("standard-insurance-lang");
-      if (savedLang === "KO") {
-        // Use a setTimeout to avoid React 18 cascading render warning
-        setTimeout(() => setLanguage("KO"), 0);
-      }
-    }
-  }, []);
+
 
 
   useEffect(() => {
-    setMenuValue(null);
-    setActiveIndex(null);
+    setTimeout(() => setMenuValue(null), 0);
+    setTimeout(() => setActiveIndex(null), 0);
   }, [pathname]);
 
 
@@ -59,7 +51,7 @@ export function Header() {
   const navigateToHome = () => route.push("/");
   const goToQuoteSection = () => route.push("/#quote");
 
-  const insuranceTypesMappedArr = insuranceTypes.map((item) => ({
+  const insuranceTypesMappedArr = (language === "EN" ? insuranceTypesEN : insuranceTypeKOR).map((item) => ({
     label: item.title,
     href: `/insurance/${item.slug}`,
   }));
@@ -82,16 +74,17 @@ export function Header() {
       { label: "Contact Us", href: "/contact" },
     ],
     KO: [
+      { label: "서비스", subItems: [
+        { label: "보험 리뷰", href: "/services/insurance-review" },
+        { label: "경쟁력 있는 견적", href: "/services/competitive-quotation" },
+        { label: "클레임 서비스", href: "/services/claim-service" },
+      ]},
       {
-        label: "서비스",
-        subItems: [
-          { label: "비즈니스 보험", href: "/services/business" },
-          { label: "주택 보험", href: "/services/home" },
-          { label: "자동차 보험", href: "/services/motor" },
-        ],
+        label: "보험 종류",
+        subItems: [...insuranceTypesMappedArr, { label: "모든 보험 종류", href: "/insurance" }],
       },
-      { label: "회사소개", href: "/about-us" },
-      { label: "연락처", href: "/contact" },
+      { label: "회사 소개", href: "/about-us" },
+      { label: "문의하기", href: "/contact" },
     ],
   };
 

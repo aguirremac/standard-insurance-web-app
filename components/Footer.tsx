@@ -1,3 +1,5 @@
+'use client';
+
 import useUtils from "@/hooks/use-utils";
 import {
   Shield,
@@ -10,12 +12,41 @@ import {
 } from "lucide-react";
 import BrandLogo from "./BrandLogo";
 import Image from "next/image";
-import { insuranceTypes } from "@/lib/insurance";
+import { insuranceTypesEN, insuranceTypeKOR } from "@/lib/insurance";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function Footer() {
 
   const { PHONE_NUMBER, COMPANY_EMAIL, ADDRESS } = useUtils();
-  
+
+  const { language } = useLanguage();
+  const insuranceTypes = language === "KO" ? insuranceTypeKOR : insuranceTypesEN;
+
+
+  const footerTexts: Record<"EN" | "KO", Record<string, string>> = {
+    EN: {
+      companyDescription: "Professional insurance solutions tailored to protect your business and personal assets with comprehensive coverage and expert service.",
+      ourServices: "Our Services",
+      legalCompliance: "Legal & Compliance",
+      privacyPolicy: "Privacy Policy",
+      termsOfService: "Terms of Service",
+      regulatoryInfo: "Regulatory Information",
+      complaintsProcedure: "Complaints Procedure",
+      fsaAuthorisation: "FSA Authorisation",
+      copyRightText: `© ${new Date().getFullYear()} Standard Insurance. All rights reserved. | Licensed and regulated by financial authorities.`
+    },
+    KO: {
+      companyDescription: "귀하의 비즈니스와 개인 자산을 보호하기 위해 포괄적인 보장과 전문적인 서비스를 제공하는 전문 보험 솔루션입니다.",
+      ourServices: "서비스",
+      legalCompliance: "법적 & 규정 준수",
+      privacyPolicy: "개인정보 처리방침",
+      termsOfService: "서비스 약관",
+      regulatoryInfo: "규제 정보",
+      complaintsProcedure: "불만 처리 절차",
+      fsaAuthorisation: "FSA 승인",
+      copyRightText: `© ${new Date().getFullYear()} Standard Insurance. 판권 소유. | 금융 당국의 허가 및 규제 대상입니다.`
+    }
+  }
 
   return (
     <footer className="bg-foreground text-gray-300 border-t border-gray-800">
@@ -27,9 +58,7 @@ export function Footer() {
               <BrandLogo />
             </div>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Professional insurance solutions tailored to protect your business
-              and personal assets with comprehensive coverage and expert
-              service.
+              { footerTexts[language].companyDescription }
             </p>
             <div className="flex space-x-4 mt-6">
               <a
@@ -58,7 +87,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-white mb-6">Our Services</h3>
+            <h3 className="text-white mb-6">{ footerTexts[language].ourServices }</h3>
             <ul className="space-y-3 text-sm">
              { insuranceTypes.map((item, index) => (
                <li key={index}>
@@ -75,19 +104,18 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white mb-6">Contact Us</h3>
+            <h3 className="text-white mb-6">{ footerTexts[language].contactUs }</h3>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" />
                 <div>
                   <div>{ PHONE_NUMBER }</div>
-                  <div className="text-gray-500">Mon-Fri 9am-5pm</div>
                 </div>
               </li>
               <li className="flex items-start space-x-3">
                 <Mail className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" />
                 <a
-                  href="mailto:info@standardinsurance.com"
+                  href={`mailto:${COMPANY_EMAIL}`}
                   className="hover:text-secondary transition-colors"
                 >
                   { COMPANY_EMAIL}
@@ -185,8 +213,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
           <p>
-            © {new Date().getFullYear()} Standard Insurance. All rights
-            reserved. | Licensed and regulated by financial authorities.
+            { footerTexts[language].copyRightText }
           </p>
         </div>
       </div>

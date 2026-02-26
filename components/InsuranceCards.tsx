@@ -13,8 +13,9 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
-import { insuranceTypes } from "@/lib/insurance";
+import { insuranceTypeKOR, insuranceTypesEN } from "@/lib/insurance";
 import { motion, Variants } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const container: Variants = {
   hidden: {},
@@ -35,10 +36,31 @@ const item: Variants = {
 };
 
 export function InsuranceCards({ showAll }: { showAll?: boolean }) {
+  const { language } = useLanguage();
+  const insuranceTypes = language === "KO" ? insuranceTypeKOR : insuranceTypesEN;
   const data = showAll ? insuranceTypes : insuranceTypes.slice(0, 6);
 
+
+  const texts: Record<"EN" | "KO", Record<string, string>> = {
+    EN: {
+      sectionTitle: "Insurance Types",
+      title: "What do we do",
+      description: "Smart, flexible insurance solutions designed around real-world risks.",
+      viewAllButton: "View all types",
+      learnMore: "Learn More →",
+    },
+    KO: {
+      sectionTitle: "보험 종류",
+      title: "우리가 하는 일",
+      description: "실제 위험을 중심으로 설계된 스마트하고 유연한 보험 솔루션입니다.",
+      viewAllButton: "모든 종류 보기",
+      learnMore: "자세히 보기 →",
+
+    }
+  }
+
   return (
-    <section id="services" className="pt-20 pb-20 bg-neutral-50">
+    <section id="insurance-types" className="pt-20 pb-20 bg-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -50,14 +72,13 @@ export function InsuranceCards({ showAll }: { showAll?: boolean }) {
         >
           <div>
             <span className="inline-flex px-4 py-1.5 rounded-full text-sm bg-primary/10 text-primary mb-4">
-              Insurance Types
+              {texts[language].sectionTitle}
             </span>
             <h2 className="text-4xl font-semibold text-gray-900 mb-3">
-              What do we do
+              {texts[language].title}
             </h2>
             <p className="text-lg text-gray-600 max-w-xl">
-              Smart, flexible insurance solutions designed around real-world
-              risks.
+              {texts[language].description}
             </p>
           </div>
 
@@ -66,9 +87,9 @@ export function InsuranceCards({ showAll }: { showAll?: boolean }) {
               <Button
                 variant="outline"
                 className="rounded-full border-gray-300 text-gray-700 hover:border-primary hover:text-primary"
-                onClick={() => (window.location.href = "/services")}
+                onClick={() => (window.location.href = "/insurance")}
               >
-                View all types
+                {texts[language].viewAllButton}
               </Button>
             </motion.div>
           )}
@@ -90,7 +111,7 @@ export function InsuranceCards({ showAll }: { showAll?: boolean }) {
               >
                 <Card
                   onClick={() =>
-                    (window.location.href = `/services/${slug}`)
+                    (window.location.href = `/insurance/${slug}`)
                   }
                   className="group cursor-pointer overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm hover:shadow-2xl transition-all duration-300"
                 >
@@ -128,7 +149,7 @@ export function InsuranceCards({ showAll }: { showAll?: boolean }) {
                       className="inline-flex items-center text-sm font-medium text-primary"
                       whileHover={{ x: 4 }}
                     >
-                      Learn More →
+                      {texts[language].learnMore}
                     </motion.span>
                   </div>
                 </Card>
