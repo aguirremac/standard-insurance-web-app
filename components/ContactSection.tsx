@@ -94,7 +94,7 @@ export function ContactSection() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
-  const handleSubmit = async (event: Event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsFormSubmitting(true)
    try {
