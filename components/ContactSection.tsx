@@ -8,8 +8,9 @@ import { Textarea } from "./ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import Image from "next/image";
 import useUtils from "@/hooks/use-utils";
-import { motion, Variants } from "framer-motion";
+import { m, motion, Variants } from "framer-motion";
 import { useToast } from "./ui/toast-provider";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -23,7 +24,50 @@ export function ContactSection() {
   const { PHONE_NUMBER, COMPANY_EMAIL, ADDRESS } = useUtils();
   const { showToast } = useToast();
 
+  const { language } = useLanguage();
+
   const [isFormSubmitting, setIsFormSubmitting] = useState(false)
+
+  const texts: Record< "EN" | "KO", Record<string, string>> = {
+    EN: {
+      contactTitle: "Contact Us",
+      contactSubtitle: "Speak directly with experienced advisors who understand your business and personal insurance needs.",
+      getInTouch: "Get in touch",
+      phoneLabel: "Phone",
+      emailLabel: "Email",
+      emailSub: "Reply within 24 hours",
+      officeLabel: "Office",
+      sendUsAMessage: "Send us a message",
+      submitButton: "Submit",
+      fullNameLabel: "Full name",
+      emailLabelForm: "Email",
+      phoneLabelForm: "Phone",
+      subjectLabel: "Subject",
+      messageLabel: "Message",
+      confidentialityNote: "Your information is kept confidential.",
+      subjectPlaceholder: "How can we help?",
+      messagePlaceholder: "Tell us a bit about what you need…",
+    },
+    KO: {
+      contactTitle: "문의하기",
+      contactSubtitle: "귀하의 비즈니스 및 개인 보험 요구 사항을 이해하는 경험이 풍부한 상담원과 직접 상담하십시오.",
+      getInTouch: "문의하기",
+      phoneLabel: "전화",
+      emailLabel: "이메일",
+      emailSub: "24시간 이내 답변",
+      officeLabel: "사무실",
+      sendUsAMessage: "메시지 보내기",
+      submitButton: "제출",
+      fullNameLabel: "성명",
+      emailLabelForm: "이메일",
+      phoneLabelForm: "전화",
+      subjectLabel: "제목",
+      messageLabel: "메시지",
+      confidentialityNote: "귀하의 정보는 기밀로 유지됩니다.",
+      subjectPlaceholder: "어떻게 도와드릴까요?",
+      messagePlaceholder: "필요한 사항을 간략하게 알려주세요…",
+    },
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -111,7 +155,7 @@ export function ContactSection() {
           <div className="absolute inset-0 bg-primary/40"></div>
           <div className="absolute inset-0 flex items-center justify-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white text-center px-6">
-              Contact Us
+              {texts[language].contactTitle}
             </h1>
           </div>
         </div>
@@ -130,11 +174,10 @@ export function ContactSection() {
           <motion.div variants={itemVariants} className="space-y-10">
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                Get in touch
+                {texts[language].getInTouch}
               </h3>
               <p className="text-gray-600 max-w-lg">
-                Speak directly with experienced advisors who understand your
-                business and personal insurance needs.
+                {texts[language].contactSubtitle}
               </p>
             </div>
 
@@ -143,19 +186,18 @@ export function ContactSection() {
               {[
                 {
                   icon: Phone,
-                  label: "Phone",
+                  label: texts[language].phoneLabel,
                   value: PHONE_NUMBER,
-                  sub: "Mon–Fri, 9am–5pm",
                 },
                 {
                   icon: Mail,
-                  label: "Email",
+                  label: texts[language].emailLabel,
                   value: COMPANY_EMAIL,
-                  sub: "Reply within 24 hours",
+                  sub: texts[language].emailSub,
                 },
                 {
                   icon: MapPin,
-                  label: "Office",
+                  label: texts[language].officeLabel,
                   value: ADDRESS,
                 }
               ].map(({ icon: Icon, label, value, sub }, i) => (
@@ -201,13 +243,13 @@ export function ContactSection() {
           {/* Right: Form */}
           <motion.div variants={itemVariants} className="rounded-3xl border border-gray-200 bg-white p-8 shadow-lg">
             <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-              Send us a message
+              {texts[language].sendUsAMessage}
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <Label>Full name</Label>
+                  <Label>{texts[language].fullNameLabel}</Label>
                   <Input
                     name="name"
                     value={formData.name}
@@ -219,7 +261,7 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <Label>Email</Label>
+                  <Label>{texts[language].emailLabelForm}</Label>
                   <Input
                     name="email"
                     type="email"
@@ -234,7 +276,7 @@ export function ContactSection() {
 
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <Label>Phone</Label>
+                  <Label>{texts[language].phoneLabel}</Label>
                   <Input
                     name="phone"
                     value={formData.phone}
@@ -245,12 +287,12 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <Label>Subject</Label>
+                  <Label>{texts[language].subjectLabel}</Label>
                   <Input
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    placeholder="How can we help?"
+                    placeholder={texts[language].subjectPlaceholder}
                     required
                     className="mt-2"
                   />
@@ -258,12 +300,12 @@ export function ContactSection() {
               </div>
 
               <div>
-                <Label>Message</Label>
+                <Label>{texts[language].messageLabel}</Label>
                 <Textarea
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Tell us a bit about what you need…"
+                  placeholder={texts[language].messagePlaceholder}
                   required
                   className="mt-2 min-h-[140px]"
                 />
@@ -275,12 +317,12 @@ export function ContactSection() {
                 disabled={isFormSubmitting || !formData.email || !formData.message || !formData.name || !formData.subject || !formData.phone}
                 className="w-full text-white rounded-full bg-primary hover:bg-primary/90"
               >
-                Send message
+                {texts[language].submitButton}
                 <Send className="ml-2 h-4 w-4" />
               </Button>
 
               <p className="text-center text-sm text-gray-500">
-                Your information is kept confidential.
+                {texts[language].confidentialityNote}
               </p>
             </form>
           </motion.div>

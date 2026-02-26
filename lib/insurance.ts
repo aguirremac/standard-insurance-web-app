@@ -379,12 +379,14 @@ export const insuranceTypeKOR: InsuranceType[]= [
 /**
  * Helpers
  */
-export function getInsuranceBySlug(slug: string): InsuranceType | undefined {
-  return insuranceTypesEN.find((item) => item.slug === slug);
+export function getInsuranceBySlug(slug: string, lang: "EN" | "KO"): InsuranceType | undefined {
+  const insuranceTypes = lang === "KO" ? insuranceTypeKOR : insuranceTypesEN;
+  return insuranceTypes.find((item) => item.slug === slug);
 }
 
-export function getAllInsuranceSlugs() {
-  return insuranceTypesEN.map((item) => ({
+export function getAllInsuranceSlugs(lang: "EN" | "KO"): { slug: string }[] {
+  const insuranceTypes = lang === "KO" ? insuranceTypeKOR : insuranceTypesEN;
+  return insuranceTypes.map((item) => ({
     slug: item.slug,
   }));
 }
