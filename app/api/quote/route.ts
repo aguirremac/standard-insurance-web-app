@@ -1,6 +1,7 @@
 import nodemailer, { Transporter } from "nodemailer";
 import { NextResponse } from "next/server";
 import { generateQuoteEmailTemplate } from "./quote-email-template";
+import { rateLimit } from "@/lib/rate-limit";
 
 type QuoteFormPayload = {
   service?: string;
@@ -12,6 +13,8 @@ type QuoteFormPayload = {
   address?: string;
   startDate?: string;
   additionalInfo?: string;
+  company?: string
+  _timestamp?: string;
 };
 
 export async function POST(req: Request) {
@@ -26,7 +29,28 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log('hots', process.env.SMTP_HOST)
+        const ip =
+        req.headers.get('x-forwarded-for')?.split(',')[0] ??
+        'unknown'
+    
+        const { success } = rateLimit(ip)
+    
+        if (!success) {
+          return NextResponse.json(
+            { error: 'Too many requests' },
+            { status: 429 }
+          )
+        }
+    
+
+    if (body.company) {
+    return Response.json({ success: true }); // silently drop
+  }
+
+   const now = Date.now();
+    if (!body._timestamp || now - Number(body._timestamp) < 2000) {
+      return Response.json({ success: true });
+    }
 
     const transporter: Transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,

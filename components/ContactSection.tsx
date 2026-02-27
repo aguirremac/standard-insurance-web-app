@@ -311,6 +311,16 @@ export function ContactSection() {
                 />
               </div>
 
+              <input
+                type="text"
+                name="company"
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
+              <input type="hidden" name="_timestamp" value={Date.now()} />
+
               <Button
                 type="submit"
                 size="lg"

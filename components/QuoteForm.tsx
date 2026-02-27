@@ -361,6 +361,17 @@ export function QuoteForm() {
                       placeholder={texts[language].tellUsMore}
                       className="mt-2 min-h-[120px]"
                     />
+
+
+                    <input
+                      type="text"
+                      name="company"
+                      className="hidden"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+
+                    <input type="hidden" name="_timestamp" value={Date.now()} />
                   </div>
                 </motion.div>
               )}
@@ -416,13 +427,14 @@ export function QuoteForm() {
                     { formData.additionalInfo && (
                       <div className="flex justify-between border-b pb-2">
                         <span>{texts[language].additionalInfoLabel}:</span>
-                        <span>{formData.additionalInfo}</span>
+                        <span className="w-full flex">{formData.additionalInfo}</span>
                       </div>
                     )}
 
                   </div>
                 </motion.div>
               )}
+              
             </AnimatePresence>
 
             {/* Navigation */}
