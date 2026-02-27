@@ -20,8 +20,9 @@ export const metadata: Metadata = {
   title: { default: 'Standard Insurance', template: '%s | Standard Insurance' },
   description: "Standard Insurance was founded with a simple belief: insurance should be clear, practical, and built around real people - not paperwork.",
   icons: {
-    icon: "/favicon-light.png",
-    apple: "/favicon-light.png",
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
   },
   openGraph: {
     title: 'Standard Insurance',
