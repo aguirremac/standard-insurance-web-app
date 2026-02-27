@@ -67,7 +67,13 @@ export function QuoteForm() {
   const handleBack = () => currentStep > 1 && setCurrentStep(currentStep - 1);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+        if (currentStep !== 4) {
+        e.preventDefault();   // ⬅️ stop native submit
+        return;
+      }
+
+      e.preventDefault();
+      setIsFormSubmitting(true);
 
     setIsFormSubmitting(true);
     try {
@@ -200,7 +206,13 @@ export function QuoteForm() {
           {/* Progress */}
           <Progress value={progress} className="h-2 rounded-full mb-8" />
 
-          <form onSubmit={handleSubmit} className="space-y-15">
+          <form 
+           onSubmit={handleSubmit} onKeyDown={(e) => {
+                if (e.key === "Enter" && currentStep !== 4) {
+                  e.preventDefault();
+                  handleNext();
+                }
+              }} className="space-y-15">
             <AnimatePresence mode="wait">
               {currentStep === 1 && (
                 <motion.div
@@ -286,7 +298,7 @@ export function QuoteForm() {
                     <Input
                       id="phone"
                       name="phone"
-                      type="tel"
+                      type="number"
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder={texts[language].phonePlaceholder}
@@ -429,7 +441,7 @@ export function QuoteForm() {
                 </Button>
               </motion.div>
 
-              {currentStep < steps.length ? (
+              {currentStep < steps.length && (
                 <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
                   <Button
                     type="button"
@@ -441,18 +453,23 @@ export function QuoteForm() {
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </motion.div>
-              ) : (
-                <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+              ) }
+
+              {
+                currentStep === steps.length && (
+                 <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
                   <Button
                     type="submit"
                     size="lg"
                     className="bg-primary hover:bg-[#063d64] text-white rounded-xl px-6"
+                    disabled={isFormSubmitting}
                   >
                     {texts[language].submitButton}
                     <CheckCircle2 className="ml-2 w-4 h-4" />
                   </Button>
                 </motion.div>
-              )}
+                )
+              }
             </div>
           </form>
         </motion.div>

@@ -27,7 +27,7 @@ export function generateQuoteEmailTemplate({
         
         <!-- Logo -->
         <div style="text-align:center;margin-bottom:24px">
-          <img src="/brandlogo-light.png" alt="Standard Insurance" width="160" />
+          <img src="https://www.standardinsurance.com.au/brandlogo-light.png" alt="Standard Insurance" width="160" />
         </div>
 
         <h2 style="margin-bottom:16px;color:#111827">New Inquiry</h2>
