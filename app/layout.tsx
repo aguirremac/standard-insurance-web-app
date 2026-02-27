@@ -17,11 +17,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Standard Insurance",
+  title: { default: 'Standard Insurance', template: '%s | Standard Insurance' },
   description: "Standard Insurance was founded with a simple belief: insurance should be clear, practical, and built around real people - not paperwork.",
   icons: {
-    icon: "/favicon-light.png"
-  }
+    icon: "/favicon-light.png",
+    apple: "/favicon-light.png",
+  },
+  openGraph: {
+    title: 'Standard Insurance',
+    description: 'Standard Insurance was founded with a simple belief: insurance should be clear, practical, and built around real people - not paperwork.',
+    url: 'https://standardinsurance.com.au',
+    siteName: 'Standard Insurance',
+    images: [{ url: 'https://standardinsurance.com.au/hero-1.png' }]
+  },
 };
 
 
