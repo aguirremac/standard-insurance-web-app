@@ -19,6 +19,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: { default: 'Standard Insurance', template: '%s | Standard Insurance' },
   description: "Standard Insurance was founded with a simple belief: insurance should be clear, practical, and built around real people - not paperwork.",
+  verification: {
+    google: 'mmFETKtsdUwKnnGtaX_ADE9GBcF-CdwrT96ClUxjui4',
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
