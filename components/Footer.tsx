@@ -32,19 +32,19 @@ export function Footer() {
       termsOfService: "Terms of Service",
       regulatoryInfo: "Regulatory Information",
       complaintsProcedure: "Complaints Procedure",
-      fsaAuthorisation: "FSA Authorisation",
+      // fsaAuthorisation: "FSA Authorisation",
       copyRightText: `© ${new Date().getFullYear()} Standard Insurance. All rights reserved. | Licensed and regulated by financial authorities.`
     },
     KO: {
       companyDescription: "귀하의 비즈니스와 개인 자산을 보호하기 위해 포괄적인 보장과 전문적인 서비스를 제공하는 전문 보험 솔루션입니다.",
-      ourServices: "서비스",
-      legalCompliance: "법적 & 규정 준수",
+      ourServices: "저희의 서비스",
+      legalCompliance: "관련 법률 & 규정 준수",
       privacyPolicy: "개인정보 처리방침",
       termsOfService: "서비스 약관",
       regulatoryInfo: "규제 정보",
       complaintsProcedure: "불만 처리 절차",
-      fsaAuthorisation: "FSA 승인",
-      copyRightText: `© ${new Date().getFullYear()} Standard Insurance. 판권 소유. | 금융 당국의 허가 및 규제 대상입니다.`
+      // fsaAuthorisation: "FSA 승인",
+      copyRightText: `© ${new Date().getFullYear()} Standard Insurance. All rights reserved. | Licensed and regulated by financial authorities.`
     }
   }
 

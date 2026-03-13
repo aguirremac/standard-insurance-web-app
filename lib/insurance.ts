@@ -80,14 +80,14 @@ Additionally, Public Liability Insurance promotes trust and professionalism. Cli
     benefits: [
       "Third-party injury cover",
       "Property damage protection",
-      "Legal defence costs",
+      "Legal defense costs",
       "Peace of mind for business owners",
     ],
   },
   {
     slug: "commercial-motor",
     title: "Commercial Motor Insurance",
-    description: "Flexible insurance for business vehicles and fleets.",
+    description: "",
     longDescription: `
 Commercial Motor Insurance provides cover for vehicles used for business purposes, including cars, vans, and fleets. It protects your vehicles from accidental damage, theft, fire, and third-party liability claims.
 
@@ -99,14 +99,12 @@ This insurance not only safeguards assets but also enhances operational efficien
     benefits: [
       "Accidental damage cover",
       "Theft and fire protection",
-      "Fleet policy options",
-      "Third-party liability cover",
     ],
   },
   {
     slug: "management-liability",
     title: "Management Liability Insurance",
-    description: "Protection for directors and officers.",
+    description: "",
     longDescription: `
 Management Liability Insurance protects directors, officers, and managers against claims arising from wrongful acts, employment practices, and regulatory investigations. It ensures that key personnel can lead with confidence without personal financial risk.
 
@@ -119,7 +117,6 @@ Moreover, Management Liability Insurance strengthens corporate governance. It en
       "Directors & officers protection",
       "Employment practices cover",
       "Regulatory investigation costs",
-      "Company reimbursement cover",
     ],
   },
   {
@@ -135,10 +132,8 @@ By mitigating financial risks, Construction Insurance allows contractors to focu
     image: "/insurance/construction-insurance.jpeg",
     icon: HardHat,
     benefits: [
-      "Contract works insurance",
       "Public and product liability",
       "Tools and equipment cover",
-      "Flexible policy terms",
     ],
   },
   {
@@ -154,9 +149,6 @@ Additionally, this insurance promotes business credibility. Clients feel reassur
     image: "/insurance/professional-indemnity.jpeg",
     icon: FileCheck,
     benefits: [
-      "Negligence claim protection",
-      "Legal defence costs",
-      "Industry-specific cover",
       "Claims-made policies",
     ],
   },
@@ -176,7 +168,6 @@ By stabilizing cash flow and mitigating financial risk, Trade Credit Insurance e
       "Protection against bad debts",
       "Improved cash flow",
       "Customer credit monitoring",
-      "Support for business growth",
     ],
   },
   {
@@ -193,7 +184,6 @@ This insurance also supports risk management strategies and compliance requireme
     icon: Factory,
     benefits: [
       "High-value asset protection",
-      "Machinery breakdown cover",
       "Tailored risk solutions",
       "Comprehensive policy wording",
     ],
@@ -205,7 +195,7 @@ export const insuranceTypeKOR: InsuranceType[]= [
       {
         slug: "business-insurance",
         title: "기업 보험",
-        description: "자산, 운영 및 책임에 대한 맞춤형 보호.",
+        description: "자산, 운영 및 배상 책임에 대한 맞춤형 커버.",
         longDescription: `
     기업 보험은 재산 피해, 법적 책임 및 예상치 못한 중단으로 인한 재정적 손실로부터 회사를 보호하는 포괄적인 보장을 제공합니다. 모든 규모의 비즈니스에 적합하도록 설계되어 어려운 상황에서도 운영을 계속할 수 있도록 보장합니다.
 
@@ -216,8 +206,8 @@ export const insuranceTypeKOR: InsuranceType[]= [
         icon: Building2,
         benefits: [
           "비즈니스 자산 보호",
-          "법적 책임 보장",
-          "유연한 정책 옵션",
+          "법적 배상책임 커버",
+          "유연한 커버 옵션",
           "위험 관리 지원",
         ],  
       },
@@ -234,16 +224,16 @@ export const insuranceTypeKOR: InsuranceType[]= [
         image: "/insurance/property-insurance.jpeg",
         icon: Home,
         benefits: [
-          "건물 및 내용물 보장",
+          "건물 및 컨텐츠 보장",
           "화재 및 자연 재해로부터 보호",
-          "선택적 사업 중단 보장",
-          "맞춤형 보험금액",
+          "영업 이익 상실 보장",
+          "맞춤형 보험 가입 금액",
         ],
       },
       {
         slug: "public-liability",
-        title: "공공 책임 보험",
-        description: "제3자 부상 또는 재산 피해에 대한 보장.",
+        title: "배상 책임 보험",
+        description: "제3자 부상 또는 재산 피해에 대한 보상.",
         longDescription: `
     공공 책임 보험은 비즈니스가 제3자와 관련된 개인 상해 또는 재산 피해에 대한 청구로부터 보호합니다. 이 보험은 현장 또는 고객과 상호 작용하는 비즈니스에 필수적입니다.
 
@@ -254,16 +244,16 @@ export const insuranceTypeKOR: InsuranceType[]= [
         image: "/insurance/public-liability.jpeg",
         icon: Shield,
         benefits: [
-          "제3자 부상 보장",
+          "제3자 신체 상해 보상",
           "재산 피해 보호",
           "법적 방어 비용",
-          "비즈니스 소유자에게 평화 제공",
+          "사업주의 안심 솔루션",
         ],
       },
       {
         slug: "commercial-motor",
-        title: "상업용 모터 보험",
-        description: "비즈니스 차량 및 함대를 위한 유연한 보험.",
+        title: "회사 차량 보험",
+        description: "",
         longDescription: `
     상업용 모터 보험은 비즈니스 목적으로 사용되는 차량, 자동차, 밴 및 함대를 보호합니다. 사고로 인한 손상, 도난, 화재 및 제3자 책임 청구로부터 차량을 보호합니다.
 
@@ -273,16 +263,14 @@ export const insuranceTypeKOR: InsuranceType[]= [
         image: "/insurance/commercial-motor.jpg",
         icon: Car,
         benefits: [
-          "사고 손상 보장",
-          "도난 및 화재 보호",
-          "함대 정책 옵션",
-          "제3자 책임 보장",
+          "사고 보상",
+          "도난 및 화재 커버",
         ],
       },
       {
         slug: "management-liability",
         title: "경영 책임 보험",
-        description: "이사 및 임원 보호.",
+        description: "",
         longDescription: `
     경영 책임 보험은 이사, 임원 및 관리자를 잘못된 행위, 고용 관행 및 규제 조사로 인한 청구로부터 보호합니다. 주요 인력이 개인 재정적 위험 없이 자신감을 가지고 리드할 수 있도록 보장합니다.
 
@@ -293,14 +281,13 @@ export const insuranceTypeKOR: InsuranceType[]= [
         icon: Users,
         benefits: [
           "이사 및 임원 보호",
-          "고용 관행 보장",
-          "규제 조사 비용",
-          "회사 상환 보장",
+          "고용법 위반 커버",
+          "세무조사비용 커버",
         ],
       },
       {
         slug: "construction-insurance",
-        title: "건설 보험",
+        title: "건설 공사 보험",
         description: "건축업자 및 계약자를 위한 전문 보장.",
         longDescription: `
     건설 보험은 건축업자, 계약자 및 현장 기술자를 위한 포괄적인 보장을 제공하여 진행 중인 작업, 도구, 장비 및 현장의 자재를 보호합니다. 예상치 못한 손실이 발생하더라도 프로젝트를 계속할 수 있도록 보장합니다.
@@ -311,10 +298,8 @@ export const insuranceTypeKOR: InsuranceType[]= [
         image: "/insurance/construction-insurance.jpeg",
         icon: HardHat,
         benefits: [
-          "계약 작업 보험",
-          "공공 및 제품 책임",
-          "도구 및 장비 보장",
-          "유연한 정책 조건",
+          "배상 책임 보험",
+          "건설 장비 보험",
         ],
       },
       {
@@ -330,15 +315,12 @@ export const insuranceTypeKOR: InsuranceType[]= [
         image: "/insurance/professional-indemnity.jpeg",
         icon: FileCheck,
         benefits: [
-          "과실 청구 보호",
-          "법적 방어 비용",
-          "업계별 보장",
-          "청구 발생 정책",
+          "청구 시점 기준 보상",
         ],
       },
       {
         slug: "trade-credit",
-        title: "무역 신용 보험",
+        title: "신용 보험",
         description: "미지급 송장으로부터 보호.",
         longDescription: `
     무역 신용 보험은 고객의 미지급 위험으로부터 비즈니스를 보호합니다. 현금 흐름을 유지하고 재정적 불확실성을 줄이며 새로운 고객과 기존 고객과 자신 있게 거래할 수 있도록 도와줍니다.
@@ -350,9 +332,8 @@ export const insuranceTypeKOR: InsuranceType[]= [
         icon: TrendingUp,
         benefits: [
           "부실 채권에 대한 보호",
-          "개선된 현금 흐름",
+          "현금 흐름 개선",
           "고객 신용 모니터링",
-          "비즈니스 성장 지원",
         ],
        },
       {
@@ -368,10 +349,9 @@ export const insuranceTypeKOR: InsuranceType[]= [
         image: "/insurance/industrial-special-risks.jpeg",
         icon: Factory,
         benefits: [
-          "고가치 자산 보호",
-          "기계 고장 보장",
+          "고액 자산 보호",
           "맞춤형 위험 솔루션",
-          "포괄적인 정책 문구",
+          "포괄적 보험 보장",
         ],
       }
 ]

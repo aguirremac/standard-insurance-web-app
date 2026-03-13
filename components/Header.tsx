@@ -74,17 +74,17 @@ export function Header() {
       { label: "Contact Us", href: "/contact" },
     ],
     KO: [
-      { label: "서비스", subItems: [
+      { label: "저희의 서비스", subItems: [
         { label: "보험 리뷰", href: "/services/insurance-review" },
-        { label: "경쟁력 있는 견적", href: "/services/competitive-quotation" },
+        { label: "가장 좋은 견적", href: "/services/competitive-quotation" },
         { label: "클레임 서비스", href: "/services/claim-service" },
       ]},
       {
-        label: "보험 종류",
+        label: "취급 보험 종류",
         subItems: [...insuranceTypesMappedArr, { label: "모든 보험 종류", href: "/insurance" }],
       },
       { label: "회사 소개", href: "/about-us" },
-      { label: "문의하기", href: "/contact" },
+      { label: "문의", href: "/contact" },
     ],
   };
 
@@ -202,7 +202,7 @@ export function Header() {
               size="lg"
               className="bg-white text-black font-bold hover:bg-gray-100 rounded-full py-4"
             >
-              {language === "EN" ? "Get a Quote" : "견적 받기"}
+              {language === "EN" ? "Get a Quote" : "견적"}
             </Button>
           </div>
 

@@ -36,16 +36,16 @@ export function CTASection() {
   const texts: Record<"EN" | "KO", Record<string, string>> = {
     EN: {
       header: "Ready to Protect What Matters?",
-      description:
-        "Get a free, no-obligation quote today and discover why thousands of clients trust Standard Insurance for their coverage needs.",
+      // description:
+      //   "Get a free, no-obligation quote today and discover why thousands of clients trust Standard Insurance for their coverage needs.",
       viewQuoteButton: "Get Your Free Quote",
       callNowButton: `Call Now: ${PHONE_NUMBER}`,
     },
     KO: {
       header: "중요한 것을 보호할 준비가 되셨나요?",
-      description:
-        "오늘 무료로 견적을 받아보시고 수천 명의 고객이 Standard Insurance 를 신뢰하는 이유를 알아보세요.",
-      viewQuoteButton: "무료 견적 받기",
+      // description:
+      //   "오늘 무료로 견적을 받아보시고 수천 명의 고객이 Standard Insurance 를 신뢰하는 이유를 알아보세요.",
+      viewQuoteButton: "무료 견적",
       callNowButton: `지금 전화하기: ${PHONE_NUMBER}`,
     },
   }

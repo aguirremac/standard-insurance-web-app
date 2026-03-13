@@ -137,7 +137,7 @@ export function QuoteForm() {
       notSpecified: "Not specified",
     },
     KO: {
-      sectionTitle: "무료 견적 받기",
+      sectionTitle: "무료 견적",
       description: "아래 양식을 작성하시면 24시간 이내에 맞춤형 보험 견적을 받아보실 수 있습니다.",
       servicePlaceholder: "서비스 선택",
       placeholder: "보험 종류 선택",
@@ -171,7 +171,7 @@ export function QuoteForm() {
 
   const serviceTypes = [
     { slug: "insuranceReview", title: language === "KO" ? "보험 검토" : "Insurance Review" },
-    { slug: "competitiveQuotation", title: language === "KO" ? "경쟁력 있는 견적" : "Competitive Quotation" },
+    { slug: "competitiveQuotation", title: language === "KO" ? "경쟁적인 견적" : "Competitive Quotation" },
     { slug: "claimService", title: language === "KO" ? "클레임 서비스" : "Claim Service" },
     { slug: "other", title: language === "KO" ? "기타" : "Other" },
   ]

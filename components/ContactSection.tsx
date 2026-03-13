@@ -31,7 +31,7 @@ export function ContactSection() {
   const texts: Record< "EN" | "KO", Record<string, string>> = {
     EN: {
       contactTitle: "Contact Us",
-      contactSubtitle: "Speak directly with experienced advisors who understand your business and personal insurance needs.",
+      // contactSubtitle: "Speak directly with experienced advisors who understand your business and personal insurance needs.",
       getInTouch: "Get in touch",
       phoneLabel: "Phone",
       emailLabel: "Email",
@@ -49,9 +49,9 @@ export function ContactSection() {
       messagePlaceholder: "Tell us a bit about what you need…",
     },
     KO: {
-      contactTitle: "문의하기",
-      contactSubtitle: "귀하의 비즈니스 및 개인 보험 요구 사항을 이해하는 경험이 풍부한 상담원과 직접 상담하십시오.",
-      getInTouch: "문의하기",
+      contactTitle: "문의",
+      // contactSubtitle: "귀하의 비즈니스 및 개인 보험 요구 사항을 이해하는 경험이 풍부한 상담원과 직접 상담하십시오.",
+      getInTouch: "문의",
       phoneLabel: "전화",
       emailLabel: "이메일",
       emailSub: "24시간 이내 답변",
@@ -63,9 +63,9 @@ export function ContactSection() {
       phoneLabelForm: "전화",
       subjectLabel: "제목",
       messageLabel: "메시지",
-      confidentialityNote: "귀하의 정보는 기밀로 유지됩니다.",
-      subjectPlaceholder: "어떻게 도와드릴까요?",
-      messagePlaceholder: "필요한 사항을 간략하게 알려주세요…",
+      confidentialityNote: "고객의 정보는 항상 견적 및 보험 관리를 위해서만 이용되며 안전하게 보관됩니다.",
+      subjectPlaceholder: "어떤 서비스가 필요하신가요?",
+      messagePlaceholder: "필요한 사항을 알려주세요...",
     },
   };
 

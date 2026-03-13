@@ -28,11 +28,11 @@ export default function NetworkSection() {
   const texts: Record< "EN" | "KO", Record<string, string>> = {
     EN: {
       networkTitle: "Our Network",
-      networkContent: "We provide dedicated and seamless insurance support through strong Iinsurance networks.",
+      networkContent: "We provide dedicated and seamless insurance support through strong Insurance networks.",
     },
     KO: {
-      networkTitle: "우리의 네트워크",
-      networkContent: "강력한 보험 네트워크를 통해 헌신적이고 원활한 보험 지원을 제공합니다.",
+      networkTitle: "저희의 보험 네트워크",
+      networkContent: "강력한 보험 네트워크를 통해 헌신적이고 원활한 보험 서비스를 제공합니다.",
     },
   };
 

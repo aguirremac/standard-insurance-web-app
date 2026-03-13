@@ -45,14 +45,14 @@ export function InsuranceCards({ showAll }: { showAll?: boolean }) {
     EN: {
       sectionTitle: "Insurance Types",
       title: "What do we do",
-      description: "Smart, flexible insurance solutions designed around real-world risks.",
+      // description: "Smart, flexible insurance solutions designed around real-world risks.",
       viewAllButton: "View all types",
       learnMore: "Learn More →",
     },
     KO: {
       sectionTitle: "보험 종류",
-      title: "우리가 하는 일",
-      description: "실제 위험을 중심으로 설계된 스마트하고 유연한 보험 솔루션입니다.",
+      title: "저희의 서비스",
+      // description: "실제 위험을 중심으로 설계된 스마트하고 유연한 보험 솔루션입니다.",
       viewAllButton: "모든 종류 보기",
       learnMore: "자세히 보기 →",
 
@@ -141,7 +141,7 @@ export function InsuranceCards({ showAll }: { showAll?: boolean }) {
                       </h3>
                     </div>
 
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4 min-h-[45px]">
                       {description}
                     </p>
 

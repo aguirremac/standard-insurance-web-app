@@ -64,7 +64,7 @@ export default function InsuranceTypePage() {
       about: "소개",
       needAQuote: "견적이 필요하신가요?",
       speakWithSpecialists: "오늘 저희 보험 전문가와 상담하세요.",
-      getAQuote: "견적 받기",
+      getAQuote: "견적",
     }
   }
 

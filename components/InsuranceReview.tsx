@@ -12,7 +12,7 @@ export default function InsuranceReviewPage() {
   const texts: Record< "EN" | "KO", Record<string, string>> = {
     EN: {
       reviewTitle: "Insurance Review",
-      reviewContent1: "Many policyholders are unsure about their exact coverage limits, exclusions, and benefits. Our Insurance Review service provides a complete assessment of your existing policies.",
+      reviewContent1: "Many policy holders are unsure about their exact coverage limits, exclusions, and benefits. Our Insurance Review service provides a complete assessment of your existing policies.",
       reviewContent2: "We identify coverage gaps, overlapping protections, and areas where you may be overpaying — ensuring your insurance truly works for you.",
       ctaTitle: "Unsure About Your Coverage?",
       ctaContent: "Let our experts review your current policies and ensure you’re properly protected.",
@@ -20,10 +20,10 @@ export default function InsuranceReviewPage() {
     },
     KO: {
       reviewTitle: "보험 검토",
-      reviewContent1: "많은 보험 가입자들은 자신의 정확한 보장 한도, 제외 사항 및 혜택에 대해 잘 모릅니다. 우리의 보험 검토 서비스는 기존 정책에 대한 완전한 평가를 제공합니다.",
-      reviewContent2: "우리는 보장 격차, 중복 보호 및 과도한 지불이 발생할 수 있는 영역을 식별하여 귀하의 보험이 진정으로 귀하를 위해 작동하도록 합니다.",
+      reviewContent1: "많은 보험 가입자들은 자신의 정확한 보장 한도, 면책 사항 및 혜택에 정확히 이해하시고 있지 못합니다. 저희가 기존 가입 보험에 대해 리뷰해 드리겠습니다.",
+      reviewContent2: "저희는 불필요한 커버를 빼고 중복된 보험으로 고객이 더 많이 납부하고 계시는 보험료를 되찾아 드립니다.",
       ctaTitle: "보장에 대해 확신이 없으신가요?",
-      ctaContent: "우리 전문가가 현재 정책을 검토하고 귀하가 적절하게 보호받고 있는지 확인하도록 하세요.",
+      ctaContent: "저희 전문가가 현재 보험 증권을 검토하고 귀하가 적절하게 보호받고 있는지 확인해 보세요.",
       requestReview: "검토 요청",
     },
   };

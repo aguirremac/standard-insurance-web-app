@@ -33,12 +33,12 @@ export function HeroSection({ heroImageSrc }: { heroImageSrc?: string }) {
       contactUs: "Contact Us",
     },
     KO: {
-      badge: "첫날부터 신뢰할 수 있는 보호",
-      heading: "신뢰할 수 있는 종합 보험 보장",
+      badge: "신뢰할 수 있는 보험 보장",
+      heading: "포괄적인 보험 커버",
       description:
-        "비즈니스와 개인의 필요에 맞춘 맞춤형 보험 솔루션으로 가장 중요한 것을 보호하세요. 빠른 견적, 전문가 조언 및 탁월한 서비스.",
-      getQuote: "무료 견적 받기",
-      contactUs: "문의하기",
+        "빠른 견적과 전문적인 보험 서비스로 고객에 맞는 보험 디자인을 통해서 소중한 사업과 자산을 보호하십시오.",
+      getQuote: "무료 견적",
+      contactUs: "문의",
     },
   }
 
