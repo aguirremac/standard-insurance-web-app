@@ -16,6 +16,7 @@ import {
   TrendingUp,
   Users,
   Factory,
+  CheckCircle,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -106,15 +107,14 @@ export default function InsuranceTypePage() {
           className="md:col-span-2 space-y-5"
         >
           <h2 className="text-2xl font-semibold mb-4">{texts[language].about} {insurance.title}</h2>
-          {insurance.longDescription.split("\n").map((para: string, idx: number) => {
-            const trimmed = para.trim();
-            if (!trimmed) return null;
-            return (
-              <p key={idx} className="text-muted-foreground py-5 leading-relaxed">
-                {trimmed}
-              </p>
-            );
-          })}
+          <ul className="space-y-3">
+          {insurance.benefits.map((benefit: string, idx: number) => (
+            <li key={idx} className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-primary mt-0.5" />
+              <span className="text-muted-foreground">{benefit}</span>
+            </li>
+          ))}
+        </ul>
         </motion.div>
 
         <motion.div
