@@ -47,10 +47,10 @@ export async function POST(req: Request) {
     return Response.json({ success: true }); // silently drop
   }
 
-   const now = Date.now();
-    if (!body._timestamp || now - Number(body._timestamp) < 2000) {
-      return Response.json({ success: true });
-    }
+  //  const now = Date.now();
+  //   if (!body._timestamp || now - Number(body._timestamp) < 2000) {
+  //     return Response.json({ success: true });
+  //   }
 
     const transporter: Transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,

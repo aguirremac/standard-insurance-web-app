@@ -45,10 +45,10 @@ export async function POST(req: Request) {
       return Response.json({ success: true }); // silently drop
     }
 
-       const now = Date.now();
-    if (!body._timestamp || now - Number(body._timestamp) < 2000) {
-      return Response.json({ success: true });
-    }
+    //    const now = Date.now();
+    // if (!body._timestamp || now - Number(body._timestamp) < 2000) {
+    //   return Response.json({ success: true });
+    // }
 
 
 
@@ -77,6 +77,8 @@ export async function POST(req: Request) {
       subject: `[Contact] ${subject}`,
       html: htmlTemplate,
     });
+
+    console.log("Contact email sent successfully");
 
     return NextResponse.json({ success: true });
   } catch (error: unknown) {
